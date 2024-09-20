@@ -21,6 +21,11 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts", "**/*.tsx",
+    ".next/types/**/*.ts",
+    "declarations/**/*.ts" // Include all files in the declarations folder
+  ],
   "exclude": ["node_modules"]
 }
