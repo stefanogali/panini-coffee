@@ -3,11 +3,12 @@ import { Button } from "../Button/Button";
 type HomeVideo = {
 	url: string;
 	heroContent: string;
-	buttonText: string;
+	buttonLabel: string;
 	buttonLink: string;
 };
 
-export default function HeroVideo({ url, heroContent, buttonText, buttonLink }: HomeVideo) {
+export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideo) {
+	console.log("buttonLabel", url);
 	return (
 		<section className="hero-video">
 			<div className="h-[calc(100vh-150px)] relative">
@@ -19,7 +20,7 @@ export default function HeroVideo({ url, heroContent, buttonText, buttonLink }: 
 				<div className="absolute bottom-0 left-0 right-0 centered-content">
 					<div className="max-w-[50%] mb-40">
 						<h2 className="text-white">{heroContent}</h2>
-						<Button className="font-medium">{buttonText}</Button>
+						<Button className="font-medium">{buttonLabel}</Button>
 					</div>
 				</div>
 			</div>

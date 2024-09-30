@@ -8,3 +8,11 @@ type FieldGroup<F> = {
     field_group: string;
     fields: F;
 }
+
+type Image = {
+	id: number;
+	url: string;
+	alt: string;
+    width: number;
+    height: number
+}

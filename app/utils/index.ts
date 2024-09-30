@@ -1,3 +1,4 @@
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 
 export async function getWPJSON<T>(endpoint: string): Promise<T>{
     try {
@@ -27,11 +28,20 @@ export function retrievePageObj<T>(arrayOfObjects:PageMeta<T>[], pageSlug:string
     return pageObjectArray;
 }
 
-export function retrieveFieldGroups<T extends FieldGroup<F>, F>(acfFieldsArray: T[], fieldGroupName: string){
-    const fields = acfFieldsArray.map((fieldObj) => {
-        if(fieldObj.field_group  === fieldGroupName) {
-            return fieldObj.fields
-        }
-    });
+export function retrieveFieldGroups<T extends FieldGroup<F>, F>(acfFieldsArray: T[], fieldGroupName: string): F[] {
+    const fields = acfFieldsArray
+        .filter(fieldObj => { return fieldObj.field_group === fieldGroupName})
+        .map(fieldObj => { return fieldObj.fields});
+        // console.log('fields', fields)
     return fields;
+}
+
+export function connectWCApi(){
+    const api = new WooCommerceRestApi({
+      url: "http://localhost:8888/panini-coffee/",
+      consumerKey: "ck_3d6e0da8c2b2b2ce4dc4ab2ef48c4b8ba1510457",
+      consumerSecret: "cs_11f7f846dbec1f2a7f35e610e38b98c99eae16cc",
+      version: "wc/v3"
+    });
+    return api;
 }

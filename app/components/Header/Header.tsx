@@ -7,7 +7,7 @@ type Header = {
 
 export default function Header({ logoUrl }: Header) {
 	return (
-		<header className="bg-foreground py-12">
+		<header className="bg-background py-12">
 			<div className="centered-content">
 				<div className="flex justify-between items-center">
 					<Image
