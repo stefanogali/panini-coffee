@@ -19,7 +19,7 @@ export default function ImagesShowcase({ title, buttonLabel, buttonUrl, images }
 							{index === 4 && (
 								<div className="aspect-square bg-white text-background px-12 text-center flex flex-col items-center justify-center">
 									<h2 className="font-bold">{title}</h2>
-									<Button className="text-background border-background">{buttonLabel}</Button>
+									<Button className="text-background border-background border-[3px]">{buttonLabel}</Button>
 								</div>
 							)}
 							<div className="aspect-square">

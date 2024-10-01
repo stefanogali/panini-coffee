@@ -20,7 +20,7 @@ const TextContent = ({ title, content, buttonLabel, buttonLink }: AboutHomeProps
 		<div className="mr-28">
 			<h2 className="mb-12 font-bold">{title}</h2>
 			<p dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
-			<Button className="border-oliveGreen">{buttonLabel}</Button>
+			<Button className="border-oliveGreen border-[3px]">{buttonLabel}</Button>
 		</div>
 	);
 };

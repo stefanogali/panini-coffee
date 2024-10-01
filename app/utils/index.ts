@@ -32,15 +32,14 @@ export function retrieveFieldGroups<T extends FieldGroup<F>, F>(acfFieldsArray: 
     const fields = acfFieldsArray
         .filter(fieldObj => { return fieldObj.field_group === fieldGroupName})
         .map(fieldObj => { return fieldObj.fields});
-        // console.log('fields', fields)
     return fields;
 }
 
 export function connectWCApi(){
     const api = new WooCommerceRestApi({
       url: "http://localhost:8888/panini-coffee/",
-      consumerKey: "ck_3d6e0da8c2b2b2ce4dc4ab2ef48c4b8ba1510457",
-      consumerSecret: "cs_11f7f846dbec1f2a7f35e610e38b98c99eae16cc",
+      consumerKey: process.env.WOOCOMMERCECONSUMERKEY as string,
+      consumerSecret: process.env.WOOCOMMERCECONSUMERSECRET as string,
       version: "wc/v3"
     });
     return api;
