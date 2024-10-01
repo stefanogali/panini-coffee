@@ -11,6 +11,7 @@ type SingleProduct = {
 	type: string;
 	price_html: string;
 	short_description: string;
+	related_ids: number[];
 	reviews_allowed: boolean;
 	description: string;
 	attributes: [{ id: number; name: string; variation: boolean; options: string[] }];
@@ -50,25 +51,31 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-	const products: { data: SingleProduct[] } = await woocommerceConnection.get("products");
-
 	const { slug } = params;
+
+	const products: { data: SingleProduct[] } = await woocommerceConnection.get("products");
+	const reviews: { data: Reviews[] } = await woocommerceConnection.get("products/reviews");
 
 	const singleProduct = products.data.filter((item) => {
 		return item.slug === slug;
 	});
 
+	// not found page if product do not exists
 	if (singleProduct.length === 0) {
 		return notFound();
 	}
 
 	const [product] = singleProduct;
-	const reviews: { data: Reviews[] } = await woocommerceConnection.get("products/reviews");
+
+	const relatedProducts: { data: SingleProduct[] } = await woocommerceConnection.get("products", {
+		include: product.related_ids.join(","),
+	});
 	// console.log(reviews);
 	const singleProductReviews = reviews.data.filter((item) => {
 		return item.product_id === product.id;
 	});
 
+	console.dir(relatedProducts.data, { depth: null });
 	// console.log(singleProductReviews);
 	// console.dir(product, { depth: null });
 	return (

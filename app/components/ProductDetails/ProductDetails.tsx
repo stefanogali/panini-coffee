@@ -18,8 +18,6 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 		setSelected(target.value);
 	};
 
-	console.log("review", reviews);
-
 	return (
 		<>
 			<div className="flex">
