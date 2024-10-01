@@ -1,7 +1,7 @@
 import { connectWCApi } from "@/app/utils";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Button } from "@/app/components/Button/Button";
+import Button from "@/app/components/Button/Button";
 import ProductDetails from "@/app/components/ProductDetails/ProductDetails";
 
 type SingleProduct = {

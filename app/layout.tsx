@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import { getWPJSON } from "./utils";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import "./globals.css";
 
 // const geistSans = localFont({
@@ -39,6 +40,7 @@ export default async function RootLayout({
 			<body className={`${jost.className}  antialiased`}>
 				<Header logoUrl={logo.logo_url} />
 				{children}
+				<Footer logoUrl={logo.logo_url} />
 			</body>
 		</html>
 	);

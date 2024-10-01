@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import { Button } from "../Button/Button";
+import Button from "../Button/Button";
 
 type ImagesShowcaseProps = {
 	title: string;

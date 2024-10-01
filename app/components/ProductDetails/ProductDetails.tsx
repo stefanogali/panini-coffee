@@ -1,7 +1,7 @@
 "use client";
 import { Reviews } from "@/app/product/[slug]/page";
 import { useState } from "react";
-import { Button } from "../Button/Button";
+import Button from "../Button/Button";
 
 type ProductDetailsProp = {
 	description: string;

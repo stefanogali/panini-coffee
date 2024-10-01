@@ -1,18 +1,18 @@
 import Image from "next/image";
 import Nav from "../Nav/Nav";
 
-type Header = {
+type HeaderProps = {
 	logoUrl: string;
 };
 
-export default function Header({ logoUrl }: Header) {
+export default function Header({ logoUrl }: HeaderProps) {
 	return (
 		<header className="bg-background py-12">
 			<div className="centered-content">
 				<div className="flex justify-between items-center">
 					<Image
 						src={logoUrl}
-						alt="Picture of the author"
+						alt="Logo"
 						width={175}
 						height={55}
 						// blurDataURL="data:..." automatically provided

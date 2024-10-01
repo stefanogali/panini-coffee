@@ -51,4 +51,30 @@ body {
 	.centered-content {
 		@apply lg:max-w-screen-xl mx-auto px-5;
 	}
+	footer #block-7 {
+		@apply font-bold text-oliveGreen mb-7;
+	}
+	footer .brand-details p {
+		@apply text-xl flex items-center mb-2.5;
+	}
+	footer #block-8 p:before,
+	footer #block-9 p:before,
+	footer #block-10 p:before {
+		background-size: contain;
+		background-repeat: no-repeat;
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		content: "";
+		margin-right: 10px;
+	}
+	footer #block-8 p:before {
+		background-image: url("icons/location.svg");
+	}
+	footer #block-9 p:before {
+		background-image: url("icons/phone.svg");
+	}
+	footer #block-10 p:before {
+		background-image: url("icons/email.svg");
+	}
 }
