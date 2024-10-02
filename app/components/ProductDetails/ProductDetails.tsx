@@ -20,7 +20,7 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 
 	return (
 		<>
-			<div className="flex">
+			<div className="flex mt-36">
 				<Button onClick={clickHandler} className={`border-0 border-t-2 border-white uppercase ${selected === "description" && "bg-[#ababab]"}`} value="description">
 					Description
 				</Button>
@@ -31,7 +31,7 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 			<div className="mt-7">
 				{selected === "description" ? (
 					<p dangerouslySetInnerHTML={{ __html: content }}></p>
-				) : (
+				) : reviews.length > 0 ? (
 					reviews.map((review) => {
 						return (
 							<>
@@ -40,6 +40,8 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 							</>
 						);
 					})
+				) : (
+					<p>There are no reviews yet.</p>
 				)}
 			</div>
 		</>
