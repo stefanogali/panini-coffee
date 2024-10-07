@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Slider from "../Slider/Slider";
 import { getWPJSON } from "@/app/utils";
 
@@ -16,13 +17,17 @@ export default async function HomeSlider() {
 			<div className="centered-content">
 				<h2 className="text-center font-bold">Choose from our products</h2>
 				<h3 className="text-center font-bold text-oliveGreen">Recently added products</h3>
-				<Slider
-					productsSpecs={products}
-					spaceBetween={50}
-					slidesPerView={3}
-					grabCursor={true}
-					loop={true}
-				/>
+				<Suspense fallback={<></>}>
+					<Slider
+						productsSpecs={products}
+						spaceBetween={20}
+						slidesPerView={4}
+						navigation={{ nextEl: ".arrow-left", prevEl: ".arrow-right" }}
+						grabCursor={true}
+						loop={true}
+						effect={"fade"}
+					/>
+				</Suspense>
 			</div>
 		</section>
 	);

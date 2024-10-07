@@ -4,11 +4,8 @@ export async function getWPJSON<T>(endpoint: string): Promise<T>{
     try {
         const response = await fetch(`${process.env.SITE_URL}/${endpoint}`, {
             // revalidate request after 5 seconds
-            next: { revalidate: 5 },
+            next: { revalidate: 30 },
             method: 'GET',
-            // headers: {
-            //     'X-API-SECRET': process.env.SECRET_KEY || ''
-            // }
         });
 
         if (!response.ok) {

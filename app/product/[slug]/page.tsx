@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 	// console.dir(variations, { depth: null });
 
-	// console.dir(product, { depth: null });
+	console.dir(product, { depth: null });
 	// console.log(singleProductReviews);
 	// console.dir(product, { depth: null });
 	return (

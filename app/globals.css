@@ -21,6 +21,10 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+.swiper-slide {
+	@apply !h-auto;
+}
+
 @layer base {
 	h1 {
 		@apply text-5xl leading-[1em];
