@@ -19,7 +19,7 @@ export default function RelatedProducts({ products }: { products: SingleProduct[
 						<div key={relatedProduct.slug} className="basis-1/3 shrink-1 text-background flex">
 							<ProductCard
 								src={relatedProduct.mainProductImage}
-								alt="yo yo"
+								alt="Related product"
 								width={172}
 								height={280}
 								className="w-full max-w-[172px] h-full max-h-[280px] drop-shadow-xl">

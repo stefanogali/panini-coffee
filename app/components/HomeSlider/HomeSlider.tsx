@@ -5,7 +5,7 @@ export type SliderProduct = {
 	title: string;
 	slug: string;
 	short_description: string;
-	image: string;
+	image: Image;
 };
 
 export default async function HomeSlider() {
@@ -16,7 +16,13 @@ export default async function HomeSlider() {
 			<div className="centered-content">
 				<h2 className="text-center font-bold">Choose from our products</h2>
 				<h3 className="text-center font-bold text-oliveGreen">Recently added products</h3>
-				<Slider productsSpecs={products} spaceBetween={50} slidesPerView={3} />
+				<Slider
+					productsSpecs={products}
+					spaceBetween={50}
+					slidesPerView={3}
+					grabCursor={true}
+					loop={true}
+				/>
 			</div>
 		</section>
 	);
