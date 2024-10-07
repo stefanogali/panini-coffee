@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import ProductCard from "../ProductCard/ProductCad";
 import { SingleProduct, Variations } from "@/app/product/[slug]/page";

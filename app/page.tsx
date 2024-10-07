@@ -1,6 +1,7 @@
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "./utils";
 import HeroVideo from "./components/HeroVideo/HeroVideo";
 import AboutHome from "./components/AboutHome/AboutHome";
+import HomeSlider from "./components/HomeSlider/HomeSlider";
 import ImagesShowcase from "./components/ImagesShowcase/ImagesShowcase";
 
 type HeroContent = {
@@ -144,6 +145,9 @@ export default async function Home() {
 					/>
 				);
 			}
+
+			pageLayout.push(<HomeSlider />);
+
 			if (imagesShowcasePageSection) {
 				pageLayout.push(
 					<ImagesShowcase
