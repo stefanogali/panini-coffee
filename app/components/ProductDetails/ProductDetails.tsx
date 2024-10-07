@@ -19,12 +19,22 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 	};
 
 	return (
-		<>
-			<div className="flex mt-36">
-				<Button onClick={clickHandler} className={`border-0 border-t-2 border-white uppercase ${selected === "description" && "bg-[#ababab]"}`} value="description">
+		<section className="mt-36">
+			<div className="flex">
+				<Button
+					onClick={clickHandler}
+					className={`border-0 border-t-2 border-white uppercase ${
+						selected === "description" && "bg-[#ababab]"
+					}`}
+					value="description">
 					Description
 				</Button>
-				<Button onClick={clickHandler} className={`border-0 border-t-2 border-white uppercase ${selected === "review" && "bg-[#ababab]"}`} value="review">
+				<Button
+					onClick={clickHandler}
+					className={`border-0 border-t-2 border-white uppercase ${
+						selected === "review" && "bg-[#ababab]"
+					}`}
+					value="review">
 					Review
 				</Button>
 			</div>
@@ -44,6 +54,6 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 					<p>There are no reviews yet.</p>
 				)}
 			</div>
-		</>
+		</section>
 	);
 }

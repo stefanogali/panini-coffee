@@ -38,9 +38,11 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${jost.className}  antialiased`}>
-				<Header logoUrl={logo.logo_url} />
-				{children}
-				<Footer logoUrl={logo.logo_url} />
+				<main>
+					<Header logoUrl={logo.logo_url} />
+					{children}
+					<Footer logoUrl={logo.logo_url} />
+				</main>
 			</body>
 		</html>
 	);

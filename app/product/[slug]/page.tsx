@@ -22,6 +22,7 @@ export type SingleProduct = {
 	slug: string;
 	name: string;
 	type: string;
+	price: string;
 	price_html: string;
 	short_description: string;
 	related_ids: number[];
@@ -29,6 +30,7 @@ export type SingleProduct = {
 	description: string;
 	attributes: Attributes[];
 	categories: Categories[];
+	variations: number[];
 	images: [
 		{
 			id: number;
@@ -43,6 +45,14 @@ export type Reviews = {
 	product_id: number;
 	review: string;
 	reviewer: string;
+};
+
+export type Variations = {
+	id: number;
+	price: string;
+	stock_status: string;
+	menu_order: number;
+	name: string;
 };
 
 const woocommerceConnection = connectWCApi();
@@ -74,6 +84,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	// get data for specific product
 	const [product] = singleProduct;
 
+	const variationIds = product.variations;
+	const variationPromises = variationIds.map((id: number) =>
+		woocommerceConnection.get(`products/${product.id}/variations/${id}`)
+	);
+	const variationResponses = await Promise.all(variationPromises);
+	const variations: Variations[] = variationResponses.map((response) => response.data);
+	// const variations = await woocommerceConnection.get(`products/${product.id}/variations`);
+
 	//  get related products
 	const relatedProducts: { data: SingleProduct[] } = await woocommerceConnection.get("products", {
 		include: product.related_ids.slice(0, 3).join(","),
@@ -84,14 +102,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
 		return item.product_id === product.id;
 	});
 
-	// console.dir(relatedProducts.data, { depth: null });
+	// console.dir(variations, { depth: null });
+
+	// console.dir(product, { depth: null });
 	// console.log(singleProductReviews);
 	// console.dir(product, { depth: null });
 	return (
-		<div className="centered-content pt-7">
-			<ProductOverview product={product} />
+		<>
+			<ProductOverview product={product} variations={variations} />
 			<ProductDetails description={product.description} reviews={singleProductReviews} />
 			<RelatedProducts products={relatedProducts.data} />
-		</div>
+		</>
 	);
 }

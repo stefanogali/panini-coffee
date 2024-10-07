@@ -90,11 +90,18 @@ function aboutCards(aboutSection: { col_2: AboutCol2 }) {
 }
 
 function groupImagesShowcase(imagesShowcaseSection: ImagesShowcaseContent) {
-	return [imagesShowcaseSection.image_1, imagesShowcaseSection.image_2, imagesShowcaseSection.image_3, imagesShowcaseSection.image_4, imagesShowcaseSection.image_5];
+	return [
+		imagesShowcaseSection.image_1,
+		imagesShowcaseSection.image_2,
+		imagesShowcaseSection.image_3,
+		imagesShowcaseSection.image_4,
+		imagesShowcaseSection.image_5,
+	];
 }
 
 export default async function Home() {
-	const pageData: PageMeta<FieldGroup<HeroContent & AboutContent & ImagesShowcaseContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
+	const pageData: PageMeta<FieldGroup<HeroContent & AboutContent & ImagesShowcaseContent>>[] =
+		await getWPJSON("wp-json/wp/v2/pages");
 
 	const pageObjs = retrievePageObj(pageData, "home");
 
@@ -102,18 +109,50 @@ export default async function Home() {
 
 	pageObjs.map((pageMeta) => {
 		if (pageMeta?.acf_field_groups.length > 0) {
-			const [heroPageSection] = retrieveFieldGroups<FieldGroup<HeroContent>, HeroContent>(pageMeta.acf_field_groups, "Homepage Hero");
-			const [aboutPageSection] = retrieveFieldGroups<FieldGroup<AboutContent>, AboutContent>(pageMeta.acf_field_groups, "About home two cols");
-			const [imagesShowcasePageSection] = retrieveFieldGroups<FieldGroup<ImagesShowcaseContent>, ImagesShowcaseContent>(pageMeta.acf_field_groups, "Images showcase");
+			const [heroPageSection] = retrieveFieldGroups<FieldGroup<HeroContent>, HeroContent>(
+				pageMeta.acf_field_groups,
+				"Homepage Hero"
+			);
+			const [aboutPageSection] = retrieveFieldGroups<FieldGroup<AboutContent>, AboutContent>(
+				pageMeta.acf_field_groups,
+				"About home two cols"
+			);
+			const [imagesShowcasePageSection] = retrieveFieldGroups<
+				FieldGroup<ImagesShowcaseContent>,
+				ImagesShowcaseContent
+			>(pageMeta.acf_field_groups, "Images showcase");
 
 			if (heroPageSection) {
-				pageLayout.push(<HeroVideo heroContent={heroPageSection.hero_content} buttonLabel={heroPageSection.button_label} buttonLink={heroPageSection.button_link} url={heroPageSection.hero_video.url} key={pageMeta.id} />);
+				pageLayout.push(
+					<HeroVideo
+						heroContent={heroPageSection.hero_content}
+						buttonLabel={heroPageSection.button_label}
+						buttonLink={heroPageSection.button_link}
+						url={heroPageSection.hero_video.url}
+						key={pageMeta.id}
+					/>
+				);
 			}
 			if (aboutPageSection) {
-				pageLayout.push(<AboutHome title={aboutPageSection.col_1.section_title} content={aboutPageSection.col_1.content} buttonLabel={aboutPageSection.col_1.button_label} buttonLink={aboutPageSection.col_1.button_url} cardContent={aboutCards(aboutPageSection)} />);
+				pageLayout.push(
+					<AboutHome
+						title={aboutPageSection.col_1.section_title}
+						content={aboutPageSection.col_1.content}
+						buttonLabel={aboutPageSection.col_1.button_label}
+						buttonLink={aboutPageSection.col_1.button_url}
+						cardContent={aboutCards(aboutPageSection)}
+					/>
+				);
 			}
 			if (imagesShowcasePageSection) {
-				pageLayout.push(<ImagesShowcase title={imagesShowcasePageSection.header!} buttonLabel={imagesShowcasePageSection.button_label!} buttonLink={imagesShowcasePageSection.button_link!} images={groupImagesShowcase(imagesShowcasePageSection)} />);
+				pageLayout.push(
+					<ImagesShowcase
+						title={imagesShowcasePageSection.header!}
+						buttonLabel={imagesShowcasePageSection.button_label!}
+						buttonLink={imagesShowcasePageSection.button_link!}
+						images={groupImagesShowcase(imagesShowcasePageSection)}
+					/>
+				);
 			}
 		}
 	});

@@ -43,15 +43,26 @@ const Card = ({ cards }: { cards: AboutCard[] }) => {
 	});
 };
 
-export default function AboutHome({ title, content, buttonLabel, buttonLink, cardContent }: AboutHomeProps) {
+export default function AboutHome({
+	title,
+	content,
+	buttonLabel,
+	buttonLink,
+	cardContent,
+}: AboutHomeProps) {
 	return (
-		<div className="centered-content pt-36">
+		<section className="centered-content pt-36">
 			<div className="grid gap-5 grid-cols-2">
-				<TextContent title={title} content={content} buttonLabel={buttonLabel} buttonLink={buttonLink} />
+				<TextContent
+					title={title}
+					content={content}
+					buttonLabel={buttonLabel}
+					buttonLink={buttonLink}
+				/>
 				<div className="grid gap-5 grid-cols-2">
 					<Card cards={cardContent || []} />
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
