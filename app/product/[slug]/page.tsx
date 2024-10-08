@@ -16,6 +16,7 @@ export async function generateStaticParams() {
 	});
 }
 
+// to do: add calls into try catch block
 export default async function Page({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
@@ -53,7 +54,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 	// console.dir(variations, { depth: null });
 
-	console.dir(product, { depth: null });
+	// console.dir(product, { depth: null });
 	// console.log(singleProductReviews);
 	// console.dir(product, { depth: null });
 	return (

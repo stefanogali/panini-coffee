@@ -44,7 +44,6 @@ const WeightSelector = ({
 		const [productrVariation] = variations.filter((variation) => {
 			return variation.name === event.target.value;
 		});
-		console.log(productrVariation);
 		setPrice(parseInt(productrVariation.price) * quantity);
 		setSelectValue(event.target.value);
 	};

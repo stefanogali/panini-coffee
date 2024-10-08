@@ -70,3 +70,10 @@ type Categories = {
 	name: string;
 	slug: string;
 }
+
+type Attributes = {
+	id: number;
+	name: string;
+	variation: boolean;
+	options: string[];
+};
