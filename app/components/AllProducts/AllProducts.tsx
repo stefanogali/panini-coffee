@@ -1,35 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ProductCard from "../ProductCard/ProductCad";
 import SettingsWheel from "@/app/icons/SettingsWheel";
 import Button from "../Button/Button";
 
 type AllProductsProps = {
 	products: SingleProduct[];
-	perPage: number;
-	isAvailableProducts: boolean;
 };
 
-export default function AllProducts({ products, perPage, isAvailableProducts }: AllProductsProps) {
-	const [offset, setOffset] = useState(perPage);
-	const [renderProducts, setRenderProducts] = useState(products);
-	const [loading, setLoading] = useState(true);
+export default function AllProducts({ products }: AllProductsProps) {
+	console.log(products);
+	const params = useSearchParams();
+
+	// console.log("params", params.get("page"));
+	const currentPage = params.get("page");
 	const router = useRouter();
+	const [renderedProducts, setRenderedProducts] = useState(products);
+	const [loading, setLoading] = useState(true);
 
 	const clickHandler = () => {
-		if (isAvailableProducts) {
-			router.push(`/shop?from=${offset}`, { scroll: false });
-			setOffset((prev) => prev + perPage);
+		if (products.length > 0) {
+			router.push(`/shop?page=${parseInt(currentPage!) + 1 || 2}`, { scroll: false });
 			setLoading(true);
+			return;
 		}
-		return;
 	};
 
 	useEffect(() => {
 		setLoading(false);
-		setRenderProducts((prev) => {
+		setRenderedProducts((prev) => {
 			const prevIds = prev.map((previousProduct) => previousProduct.id);
 
 			const filteredProducts = products.filter((product) => {
@@ -38,15 +39,11 @@ export default function AllProducts({ products, perPage, isAvailableProducts }: 
 			return [...prev, ...filteredProducts];
 		});
 	}, [products]);
-	// console.log("offset", offset);
-	// console.log("renderedProduct", renderProducts);
-
-	console.log("loading", loading);
 
 	return (
 		<div className="centered-content">
 			<div className="grid grid-cols-4 gap-4">
-				{renderProducts.map((product) => {
+				{renderedProducts.map((product) => {
 					return (
 						<ProductCard
 							key={product.id}
@@ -59,11 +56,15 @@ export default function AllProducts({ products, perPage, isAvailableProducts }: 
 					);
 				})}
 			</div>
-			<div className="flex justify-center">
-				<Button onClick={clickHandler} className="border-[3px] mx-auto uppercase flex items-center">
-					Load more {loading && <SettingsWheel className="ml-2.5 w-6 h-auto animate-spinWheel" />}
-				</Button>
-			</div>
+			{products.length > 0 && (
+				<div className="flex justify-center">
+					<Button
+						onClick={clickHandler}
+						className="border-[3px] mx-auto uppercase flex items-center">
+						Load more {loading && <SettingsWheel className="ml-2.5 w-6 h-auto animate-spinWheel" />}
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }

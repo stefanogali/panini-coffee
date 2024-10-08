@@ -6,27 +6,21 @@ const woocommerceConnection = connectWCApi();
 export default async function Page({
 	searchParams,
 }: {
-	searchParams?: { [key: string]: number | undefined };
+	searchParams?: { [key: string]: string | undefined };
 }) {
 	const perPage = 4;
-	const offset = searchParams?.from || 0;
+	const page = searchParams?.page || 1;
 
 	let products: { data: SingleProduct[] } | undefined;
 
 	try {
-		products = await woocommerceConnection.get(`products?per_page=${perPage}&offset=${offset}`);
+		products = await woocommerceConnection.get(`products?per_page=${perPage}&page=${page}`);
 	} catch (error) {
 		return <h2>Oops, there was an error on retriving the products. Please try again shortly</h2>;
 	}
 
 	if (products) {
-		return (
-			<AllProducts
-				products={products.data}
-				perPage={perPage}
-				isAvailableProducts={products.data.length > 0}
-			/>
-		);
+		return <AllProducts products={products.data} />;
 	}
 
 	return null;
