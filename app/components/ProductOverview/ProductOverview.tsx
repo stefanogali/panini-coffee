@@ -2,9 +2,6 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import ProductCard from "../ProductCard/ProductCad";
-import { SingleProduct, Variations } from "@/app/product/[slug]/page";
-import { Attributes } from "@/app/product/[slug]/page";
-import { Categories } from "@/app/product/[slug]/page";
 
 type ProductOverviewProps = {
 	product: SingleProduct;

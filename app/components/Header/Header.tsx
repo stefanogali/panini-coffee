@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Nav from "../Nav/Nav";
+import Link from "next/link";
 
 type HeaderProps = {
 	logoUrl: string;
@@ -10,14 +11,16 @@ export default function Header({ logoUrl }: HeaderProps) {
 		<header className="bg-background py-12">
 			<div className="centered-content">
 				<div className="flex justify-between items-center">
-					<Image
-						src={logoUrl}
-						alt="Logo"
-						width={175}
-						height={55}
-						// blurDataURL="data:..." automatically provided
-						// placeholder="blur"
-					/>
+					<Link href="/">
+						<Image
+							src={logoUrl}
+							alt="Logo"
+							width={175}
+							height={55}
+							// blurDataURL="data:..." automatically provided
+							// placeholder="blur"
+						/>
+					</Link>
 					<Nav />
 				</div>
 			</div>

@@ -1,4 +1,3 @@
-import { SingleProduct } from "@/app/product/[slug]/page";
 import ProductCard from "../ProductCard/ProductCad";
 import Button from "../Button/Button";
 import Link from "next/link";

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { SliderProduct } from "../HomeSlider/HomeSlider";
 import ProductCard from "../ProductCard/ProductCad";
 import Link from "next/link";
 import Button from "../Button/Button";
@@ -13,7 +12,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 type SliderProps = {
-	productsSpecs: SliderProduct[];
+	productsSpecs: FeaturedProduct[];
 } & SwiperProps;
 
 export default function Slider(props: SliderProps) {

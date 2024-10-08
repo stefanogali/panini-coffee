@@ -2,6 +2,7 @@ import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "./utils";
 import HeroVideo from "./components/HeroVideo/HeroVideo";
 import AboutHome from "./components/AboutHome/AboutHome";
 import HomeSlider from "./components/HomeSlider/HomeSlider";
+import FeaturedProductHome from "./components/FeturedProductHome/FeaturedProductHome";
 import ImagesShowcase from "./components/ImagesShowcase/ImagesShowcase";
 
 type HeroContent = {
@@ -45,6 +46,8 @@ type ImagesShowcaseContent = {
 	button_label?: string;
 	button_link?: string;
 };
+
+type HomePageContent = HeroContent & AboutContent & ImagesShowcaseContent;
 
 function aboutCards(aboutSection: { col_2: AboutCol2 }) {
 	const card1 = {
@@ -101,12 +104,13 @@ function groupImagesShowcase(imagesShowcaseSection: ImagesShowcaseContent) {
 }
 
 export default async function Home() {
-	const pageData: PageMeta<FieldGroup<HeroContent & AboutContent & ImagesShowcaseContent>>[] =
-		await getWPJSON("wp-json/wp/v2/pages");
+	const pageData: PageMeta<FieldGroup<HomePageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
 
 	const pageObjs = retrievePageObj(pageData, "home");
 
 	const pageLayout: React.ReactElement[] = [];
+
+	const [homePage] = pageObjs;
 
 	pageObjs.map((pageMeta) => {
 		if (pageMeta?.acf_field_groups.length > 0) {
@@ -158,6 +162,8 @@ export default async function Home() {
 					/>
 				);
 			}
+
+			pageLayout.push(<FeaturedProductHome product={homePage.featured_product} />);
 		}
 	});
 	return pageLayout;

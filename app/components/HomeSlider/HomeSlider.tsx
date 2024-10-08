@@ -2,15 +2,8 @@ import { Suspense } from "react";
 import Slider from "../Slider/Slider";
 import { getWPJSON } from "@/app/utils";
 
-export type SliderProduct = {
-	title: string;
-	slug: string;
-	short_description: string;
-	image: Image;
-};
-
 export default async function HomeSlider() {
-	const products: SliderProduct[] = await getWPJSON("wp-json/custom/v1/products");
+	const products: FeaturedProduct[] = await getWPJSON("wp-json/custom/v1/products");
 	// console.log(products);
 	return (
 		<section className="pt-36">

@@ -1,5 +1,4 @@
 "use client";
-import { Reviews } from "@/app/product/[slug]/page";
 import { useState } from "react";
 import Button from "../Button/Button";
 
@@ -8,7 +7,7 @@ type ProductDetailsProp = {
 	reviews: Reviews[];
 };
 export default function ProductDetails({ description, reviews }: ProductDetailsProp) {
-	const [selected, setSelected] = useState("description" || "");
+	const [selected, setSelected] = useState("description");
 
 	const content = selected === "description" ? description.replace(/<\/?p>/g, "") : reviews;
 

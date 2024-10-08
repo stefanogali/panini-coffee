@@ -1,13 +1,13 @@
 import Button from "../Button/Button";
 
-type HomeVideo = {
+type HomeVideoProps = {
 	url: string;
 	heroContent: string;
 	buttonLabel: string;
 	buttonLink: string;
 };
 
-export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideo) {
+export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideoProps) {
 	return (
 		<section className="hero-video">
 			<div className="h-[calc(100vh-150px)] relative">

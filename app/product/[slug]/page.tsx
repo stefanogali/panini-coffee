@@ -4,57 +4,6 @@ import ProductOverview from "@/app/components/ProductOverview/ProductOverview";
 import ProductDetails from "@/app/components/ProductDetails/ProductDetails";
 import RelatedProducts from "@/app/components/RelatedProducts/RelatedProducts";
 
-export type Attributes = {
-	id: number;
-	name: string;
-	variation: boolean;
-	options: string[];
-};
-
-export type Categories = {
-	id: number;
-	name: string;
-	slug: string;
-};
-
-export type SingleProduct = {
-	id: number;
-	slug: string;
-	name: string;
-	type: string;
-	price: string;
-	price_html: string;
-	short_description: string;
-	related_ids: number[];
-	reviews_allowed: boolean;
-	description: string;
-	attributes: Attributes[];
-	categories: Categories[];
-	variations: number[];
-	images: [
-		{
-			id: number;
-			src: string;
-			alt: string;
-		}
-	];
-};
-
-export type Reviews = {
-	id: number;
-	product_id: number;
-	review: string;
-	reviewer: string;
-};
-
-export type Variations = {
-	id: number;
-	price: string;
-	stock_status: string;
-	menu_order: number;
-	name: string;
-};
-
 const woocommerceConnection = connectWCApi();
 
 // Return a list of `params` to populate the [slug] dynamic segment
