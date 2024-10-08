@@ -8,7 +8,7 @@ export default async function Page({
 }: {
 	searchParams?: { [key: string]: number | undefined };
 }) {
-	const perPage = 3;
+	const perPage = 4;
 	const offset = searchParams?.from || 0;
 
 	let products: { data: SingleProduct[] } | undefined;

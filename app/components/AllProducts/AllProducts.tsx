@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ProductCard from "../ProductCard/ProductCad";
+import SettingsWheel from "@/app/icons/SettingsWheel";
 import Button from "../Button/Button";
 
 type AllProductsProps = {
@@ -59,8 +60,8 @@ export default function AllProducts({ products, perPage, isAvailableProducts }: 
 				})}
 			</div>
 			<div className="flex justify-center">
-				<Button onClick={clickHandler} className="border-[3px] mx-auto uppercase">
-					Load more
+				<Button onClick={clickHandler} className="border-[3px] mx-auto uppercase flex items-center">
+					Load more {loading && <SettingsWheel className="ml-2.5 w-6 h-auto animate-spinWheel" />}
 				</Button>
 			</div>
 		</div>
