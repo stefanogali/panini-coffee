@@ -1,4 +1,5 @@
 import { connectWCApi } from "../utils";
+import AllProducts from "../components/AllProducts/AllProducts";
 
 const woocommerceConnection = connectWCApi();
 
@@ -14,11 +15,19 @@ export default async function Page({
 
 	try {
 		products = await woocommerceConnection.get(`products?per_page=${perPage}&offset=${offset}`);
-	} catch (error) {}
-
-	if (products && products.data.length) {
-		console.dir(products.data, { depth: null });
+	} catch (error) {
+		return <h2>Oops, there was an error on retriving the products. Please try again shortly</h2>;
 	}
 
-	return <h1>Params: {searchParams?.from}</h1>;
+	if (products) {
+		return (
+			<AllProducts
+				products={products.data}
+				perPage={perPage}
+				isAvailableProducts={products.data.length > 0}
+			/>
+		);
+	}
+
+	return null;
 }
