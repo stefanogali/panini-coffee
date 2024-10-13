@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductCard from "../ProductCard/ProductCad";
 import ProductCategories from "../ProductCategories/ProductCategories";
 import SettingsWheel from "@/app/icons/SettingsWheel";
 import Button from "../Button/Button";
+
+export type Category = {
+	id: number;
+	name: string;
+	slug: string;
+};
 
 type AllProductsProps = {
 	products: SingleProduct[];
@@ -13,33 +19,42 @@ type AllProductsProps = {
 
 export default function AllProducts({ products }: AllProductsProps) {
 	// console.dir(products, { depth: null });
-	const availableCategories = Array.from(
-		new Set(
-			products.flatMap((product) =>
-				product.categories
-					.map((category) => {
-						if (category.slug !== "uncategorised") {
-							return category.slug;
-						}
-						return null;
-					})
-					.filter((category) => category !== null)
-			)
-		)
-	);
+	const availableCategories = useMemo(() => {
+		const uniqueSlugs = new Set<string>();
+		const uniqueCategories: Category[] = [];
 
-	// console.log(availableCategories);
+		products.forEach((product) => {
+			product.categories.forEach((category) => {
+				if (!uniqueSlugs.has(category.slug)) {
+					uniqueSlugs.add(category.slug);
+					uniqueCategories.push(category);
+				}
+			});
+		});
+
+		return uniqueCategories;
+	}, [products]);
+
+	// console.log("availableCategories", availableCategories);
+
 	const params = useSearchParams();
-
-	// console.log("params", params.get("page"));
 	const currentPage = params.get("page");
+	const currentCategory = params.get("category");
 	const router = useRouter();
 	const [renderedProducts, setRenderedProducts] = useState(products);
 	const [loading, setLoading] = useState(true);
+	const [productCategories, setProductCategories] = useState(availableCategories);
 
 	const clickHandler = () => {
 		if (products.length > 0) {
-			router.push(`/shop?page=${parseInt(currentPage!) + 1 || 2}`, { scroll: false });
+			router.push(
+				`/shop?page=${parseInt(currentPage!) + 1 || 2}${
+					currentCategory ? `&category=${currentCategory}` : ""
+				}`,
+				{
+					scroll: false,
+				}
+			);
 			setLoading(true);
 			return;
 		}
@@ -47,6 +62,12 @@ export default function AllProducts({ products }: AllProductsProps) {
 
 	useEffect(() => {
 		setLoading(false);
+		if (products.length > 0) setProductCategories(availableCategories);
+
+		if (!currentPage) {
+			setRenderedProducts(products);
+			return;
+		}
 		setRenderedProducts((prev) => {
 			const prevIds = prev.map((previousProduct) => previousProduct.id);
 
@@ -55,11 +76,11 @@ export default function AllProducts({ products }: AllProductsProps) {
 			});
 			return [...prev, ...filteredProducts];
 		});
-	}, [products]);
+	}, [products, currentPage, availableCategories]);
 
 	return (
 		<div className="container px-5">
-			<ProductCategories categories={availableCategories} />
+			<ProductCategories categories={productCategories} currentCategory={currentCategory} />
 			<div className="grid grid-cols-4 gap-4">
 				{renderedProducts.map((product) => {
 					return (

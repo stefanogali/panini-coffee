@@ -21,6 +21,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         oliveGreen: "var(--oliveGreen)",
+        orange:"var(--orange)"
       },
       keyframes: {
         spin: {

@@ -10,11 +10,16 @@ export default async function Page({
 }) {
 	const perPage = 4;
 	const page = searchParams?.page || 1;
+	const category = searchParams?.category || "";
+	// console.log("category", category);
 
 	let products: { data: SingleProduct[] } | undefined;
 
 	try {
-		products = await woocommerceConnection.get(`products?per_page=${perPage}&page=${page}`);
+		products = await woocommerceConnection.get(
+			`products?per_page=${perPage}&page=${page}&category=${category}`
+		);
+		// console.log("called");
 	} catch (error) {
 		return (
 			<div className="container px-5">
