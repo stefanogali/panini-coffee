@@ -16,14 +16,25 @@ export async function generateStaticParams() {
 	});
 }
 
-// to do: add calls into try catch block
+// to do: refactor
 export default async function Page({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
-	const products: { data: SingleProduct[] } = await woocommerceConnection.get("products");
-	const reviews: { data: Reviews[] } = await woocommerceConnection.get("products/reviews");
+	let products: { data: SingleProduct[] } = { data: [] };
+	let reviews: { data: Reviews[] } = { data: [] };
+	let singleProduct = [];
+	try {
+		products = await woocommerceConnection.get("products");
+		reviews = await woocommerceConnection.get("products/reviews");
+	} catch (error) {
+		return (
+			<div className="container px-5">
+				<h2>Oops, there was an error on retriving the product. Please try again shortly</h2>
+			</div>
+		);
+	}
 
-	const singleProduct = products.data.filter((item) => {
+	singleProduct = products.data.filter((item) => {
 		return item.slug === slug;
 	});
 
@@ -35,24 +46,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const [product] = singleProduct;
 
 	const variationIds = product.variations;
-	const variationPromises = variationIds.map((id: number) =>
-		woocommerceConnection.get(`products/${product.id}/variations/${id}`)
-	);
-	const variationResponses = await Promise.all(variationPromises);
-	const variations: Variations[] = variationResponses.map((response) => response.data);
-	// const variations = await woocommerceConnection.get(`products/${product.id}/variations`);
+	let variations: Variations[] = [];
+	let relatedProducts: { data: SingleProduct[] } = { data: [] };
 
-	//  get related products
-	const relatedProducts: { data: SingleProduct[] } = await woocommerceConnection.get("products", {
-		include: product.related_ids.slice(0, 3).join(","),
-	});
+	try {
+		const variationPromises = variationIds.map((id: number) =>
+			woocommerceConnection.get(`products/${product.id}/variations/${id}`)
+		);
+		const variationResponses = await Promise.all(variationPromises);
+		variations = variationResponses.map((response) => response.data);
+		relatedProducts = await woocommerceConnection.get("products", {
+			include: product.related_ids.slice(0, 3).join(","),
+		});
+	} catch (eroor) {
+		return (
+			<div className="container px-5">
+				<h2>Oops, there was an error on retriving the product. Please try again shortly</h2>
+			</div>
+		);
+	}
 
-	// get review for product
 	const singleProductReviews = reviews.data.filter((item) => {
 		return item.product_id === product.id;
 	});
-
-	// console.dir(variations, { depth: null });
 
 	// console.dir(product, { depth: null });
 	// console.log(singleProductReviews);
