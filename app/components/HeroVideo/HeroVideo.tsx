@@ -16,7 +16,7 @@ export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }:
 					{/* <source src="movie.ogg" type="video/ogg"> */}
 					Your browser does not support the video tag.
 				</video>
-				<div className="absolute bottom-0 left-0 right-0 centered-content">
+				<div className="container px-5 absolute bottom-0 left-0 right-0">
 					<div className="max-w-[50%] mb-40">
 						<h2 className="text-white">{heroContent}</h2>
 						<Button className="font-medium border-[3px]">{buttonLabel}</Button>

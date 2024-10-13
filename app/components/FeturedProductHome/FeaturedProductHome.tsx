@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function FeaturedProductHome({ product }: { product: FeaturedProduct }) {
 	return (
 		<section className="bg-white mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat">
-			<div className="centered-content flex items-center py-20">
+			<div className="container px-5 flex items-center py-20">
 				<div className="text-background pr-20">
 					<h2 className="font-bold mb-10">{product.title}</h2>
 					<p>{product.short_description}</p>

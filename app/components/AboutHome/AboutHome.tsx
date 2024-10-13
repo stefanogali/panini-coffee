@@ -51,7 +51,7 @@ export default function AboutHome({
 	cardContent,
 }: AboutHomeProps) {
 	return (
-		<section className="centered-content pt-36">
+		<section className="container px-5 pt-36">
 			<div className="grid gap-5 grid-cols-2">
 				<TextContent
 					title={title}

@@ -7,7 +7,7 @@ export default async function HomeSlider() {
 	// console.log(products);
 	return (
 		<section className="pt-36">
-			<div className="centered-content">
+			<div className="container px-5">
 				<h2 className="text-center font-bold">Choose from our products</h2>
 				<h3 className="text-center font-bold text-oliveGreen">Recently added products</h3>
 				<Suspense fallback={<></>}>

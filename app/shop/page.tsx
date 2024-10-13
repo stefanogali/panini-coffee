@@ -16,7 +16,11 @@ export default async function Page({
 	try {
 		products = await woocommerceConnection.get(`products?per_page=${perPage}&page=${page}`);
 	} catch (error) {
-		return <h2>Oops, there was an error on retriving the products. Please try again shortly</h2>;
+		return (
+			<div className="container px-5">
+				<h2>Oops, there was an error on retriving the products. Please try again shortly</h2>
+			</div>
+		);
 	}
 
 	if (products) {

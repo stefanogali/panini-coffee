@@ -9,7 +9,7 @@ type HeaderProps = {
 export default function Header({ logoUrl }: HeaderProps) {
 	return (
 		<header className="bg-background py-12">
-			<div className="centered-content">
+			<div className="container px-5">
 				<div className="flex justify-between items-center">
 					<Link href="/">
 						<Image

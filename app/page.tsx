@@ -12,7 +12,6 @@ type HeroContent = {
 	button_link: string;
 };
 
-// todo: change button_text with button_label
 type AboutCol1 = {
 	section_title: string;
 	content: string;

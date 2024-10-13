@@ -74,7 +74,7 @@ export default async function Footer({ logoUrl }: FooterProps) {
 
 	return (
 		<footer className="py-40">
-			<div className="centered-content">
+			<div className="container px-5">
 				<div className="flex justify-center">
 					<div className="flex-initial w-32 mb-16">
 						<Image src={logoUrl} width={128} height={40} alt="Panini coffee logo" />

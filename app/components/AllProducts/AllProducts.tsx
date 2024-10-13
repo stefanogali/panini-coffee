@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductCard from "../ProductCard/ProductCad";
+import ProductCategories from "../ProductCategories/ProductCategories";
 import SettingsWheel from "@/app/icons/SettingsWheel";
 import Button from "../Button/Button";
 
@@ -11,7 +12,23 @@ type AllProductsProps = {
 };
 
 export default function AllProducts({ products }: AllProductsProps) {
-	console.log(products);
+	// console.dir(products, { depth: null });
+	const availableCategories = Array.from(
+		new Set(
+			products.flatMap((product) =>
+				product.categories
+					.map((category) => {
+						if (category.slug !== "uncategorised") {
+							return category.slug;
+						}
+						return null;
+					})
+					.filter((category) => category !== null)
+			)
+		)
+	);
+
+	// console.log(availableCategories);
 	const params = useSearchParams();
 
 	// console.log("params", params.get("page"));
@@ -41,7 +58,8 @@ export default function AllProducts({ products }: AllProductsProps) {
 	}, [products]);
 
 	return (
-		<div className="centered-content">
+		<div className="container px-5">
+			<ProductCategories categories={availableCategories} />
 			<div className="grid grid-cols-4 gap-4">
 				{renderedProducts.map((product) => {
 					return (
