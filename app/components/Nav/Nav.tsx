@@ -1,4 +1,10 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import Cart from "@/app/icons/Cart";
+
+const navigation = ["Home", "Shop", "Contacts", "About"];
 
 const HeaderCart = () => {
 	return (
@@ -9,13 +15,26 @@ const HeaderCart = () => {
 };
 
 export default function Nav() {
+	const pathname = usePathname();
+
 	return (
 		<nav className="text-white">
 			<ul className="flex gap-x-7 items-center text-2xl">
-				<li>Home</li>
-				<li>Shop</li>
-				<li>Contacts</li>
-				<li>About</li>
+				{navigation.map((item, index) => {
+					return (
+						<li
+							key={index}
+							className={`${
+								item === "Home" && pathname === "/"
+									? "text-orange"
+									: `/${item.toLowerCase()}` === pathname
+									? "text-orange"
+									: ""
+							} `}>
+							<Link href={`${item === "Home" ? "/" : `/${item.toLowerCase()}`}`}>{item}</Link>
+						</li>
+					);
+				})}
 				<HeaderCart />
 			</ul>
 		</nav>
