@@ -126,8 +126,8 @@ export default async function Home() {
 				ImagesShowcaseContent
 			>(pageMeta.acf_field_groups, "Images showcase");
 
-			if (heroPageSection) {
-				pageLayout.push(
+			pageLayout.push(
+				<>
 					<HeroVideo
 						heroContent={heroPageSection.hero_content}
 						buttonLabel={heroPageSection.button_label}
@@ -135,10 +135,6 @@ export default async function Home() {
 						url={heroPageSection.hero_video.url}
 						key={pageMeta.id}
 					/>
-				);
-			}
-			if (aboutPageSection) {
-				pageLayout.push(
 					<AboutHome
 						title={aboutPageSection.col_1.section_title}
 						content={aboutPageSection.col_1.content}
@@ -146,23 +142,16 @@ export default async function Home() {
 						buttonLink={aboutPageSection.col_1.button_url}
 						cardContent={aboutCards(aboutPageSection)}
 					/>
-				);
-			}
-
-			pageLayout.push(<HomeSlider />);
-
-			if (imagesShowcasePageSection) {
-				pageLayout.push(
+					<HomeSlider />
 					<ImagesShowcase
 						title={imagesShowcasePageSection.header!}
 						buttonLabel={imagesShowcasePageSection.button_label!}
 						buttonLink={imagesShowcasePageSection.button_link!}
 						images={groupImagesShowcase(imagesShowcasePageSection)}
 					/>
-				);
-			}
-
-			pageLayout.push(<FeaturedProductHome product={homePage.featured_product} />);
+					<FeaturedProductHome product={homePage.featured_product} />
+				</>
+			);
 		}
 	});
 	return pageLayout;
