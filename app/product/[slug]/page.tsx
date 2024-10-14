@@ -23,9 +23,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	let products: { data: SingleProduct[] } = { data: [] };
 	let reviews: { data: Reviews[] } = { data: [] };
 	let singleProduct = [];
+	let variations: Variations[] = [];
+	let relatedProducts: { data: SingleProduct[] } = { data: [] };
+
 	try {
-		products = await woocommerceConnection.get("products");
-		reviews = await woocommerceConnection.get("products/reviews");
+		[products, reviews] = await Promise.all([
+			woocommerceConnection.get("products"),
+			woocommerceConnection.get("products/reviews"),
+		]);
 	} catch (error) {
 		return (
 			<div className="container px-5">
@@ -42,19 +47,20 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	if (singleProduct.length === 0) {
 		return notFound();
 	}
+
 	// get data for specific product
 	const [product] = singleProduct;
-
+	const singleProductReviews = reviews.data.filter((item) => {
+		return item.product_id === product.id;
+	});
 	const variationIds = product.variations;
-	let variations: Variations[] = [];
-	let relatedProducts: { data: SingleProduct[] } = { data: [] };
 
 	try {
-		const variationPromises = variationIds.map((id: number) =>
+		const totalVariations = variationIds.map((id: number) =>
 			woocommerceConnection.get(`products/${product.id}/variations/${id}`)
 		);
-		const variationResponses = await Promise.all(variationPromises);
-		variations = variationResponses.map((response) => response.data);
+		const resolvedVariations = await Promise.all(totalVariations);
+		variations = resolvedVariations.map((response) => response.data);
 		relatedProducts = await woocommerceConnection.get("products", {
 			include: product.related_ids.slice(0, 3).join(","),
 		});
@@ -65,10 +71,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 			</div>
 		);
 	}
-
-	const singleProductReviews = reviews.data.filter((item) => {
-		return item.product_id === product.id;
-	});
 
 	// console.dir(product, { depth: null });
 	// console.log(singleProductReviews);
