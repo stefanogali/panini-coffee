@@ -31,7 +31,13 @@ const config: Config = {
       },
       animation: {
         spinWheel: 'spin 3s linear infinite',
-      }
+      },
+      maxHeight: {
+        'hero-max-height': '768px',
+      },
+      width: {
+        'half-container-xl': 'calc(1280px/2)',
+       }
     },
   },
   plugins: [],

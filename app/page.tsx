@@ -149,7 +149,7 @@ export default async function Home() {
 						buttonLink={imagesShowcasePageSection.button_link!}
 						images={groupImagesShowcase(imagesShowcasePageSection)}
 					/>
-					<FeaturedProductHome product={homePage.featured_product} />
+					<FeaturedProductHome product={homePage.featured_product!} />
 				</>
 			);
 		}
