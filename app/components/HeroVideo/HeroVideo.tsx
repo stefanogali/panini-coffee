@@ -10,7 +10,7 @@ type HomeVideoProps = {
 export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideoProps) {
 	return (
 		<section className="hero-video">
-			<div className="h-[calc(100vh-150px)] relative">
+			<div className="h-[calc(100vh-var(--headerHeight))] relative">
 				<video loop autoPlay muted className="h-full w-full object-cover">
 					<source src={url} type="video/mp4" />
 					{/* <source src="movie.ogg" type="video/ogg"> */}

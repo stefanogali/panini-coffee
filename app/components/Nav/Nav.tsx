@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Cart from "@/app/icons/Cart";
 
-const navigation = ["Home", "Shop", "About", "Contacts"];
+const navigation = ["Home", "Shop", "About"];
 
 const HeaderCart = () => {
 	return (

@@ -27,10 +27,12 @@ const config: Config = {
         spin: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
-        }
+        },
+       
       },
       animation: {
         spinWheel: 'spin 3s linear infinite',
+       
       },
       maxHeight: {
         'hero-max-height': '768px',
