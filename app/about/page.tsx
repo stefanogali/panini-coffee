@@ -1,14 +1,15 @@
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "../utils";
 import HeroTwoCols from "../components/HeroTwoCols/HeroTwoCols";
 import Timeline from "../components/Timeline/Timeline";
+import ImageTextTwoCols from "../components/ImageTextTwoCols/ImageTextTwoCols";
 
-type Col1 = {
+type HeroCol1 = {
 	title: string;
 	first_paragraph: string;
 	second_paragraph: string;
 };
 
-type Col2 = {
+type HeroCol2 = {
 	image: Image;
 };
 
@@ -25,9 +26,21 @@ type Timeline = {
 	content_fifth_step: string;
 };
 
-type HeroTwoColsContent = { first_col: Col1; second_col: Col2 };
+type ImageTextTwoCols = {
+	col_1: {
+		image: Image;
+	};
+	col_2: {
+		title: string;
+		content: string;
+		button_label: string;
+		button_link: string;
+	};
+};
 
-type AboutPageContent = HeroTwoColsContent & Timeline;
+type HeroTwoColsContent = { first_col: HeroCol1; second_col: HeroCol2 };
+
+type AboutPageContent = HeroTwoColsContent & Timeline & ImageTextTwoCols;
 
 export default async function Page() {
 	const pageData: PageMeta<FieldGroup<AboutPageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
@@ -45,6 +58,11 @@ export default async function Page() {
 				pageMeta.acf_field_groups,
 				"Timeline"
 			);
+
+			const [imageTextPageSection] = retrieveFieldGroups<
+				FieldGroup<ImageTextTwoCols>,
+				ImageTextTwoCols
+			>(pageMeta.acf_field_groups, "Image text two cols");
 			pageLayout.push(
 				<>
 					<HeroTwoCols
@@ -64,6 +82,13 @@ export default async function Page() {
 						contentFourth={timelinePageSection.content_fourth_step}
 						yearFifth={timelinePageSection.year_fifth_step}
 						contentFifth={timelinePageSection.content_fifth_step}
+					/>
+					<ImageTextTwoCols
+						image={imageTextPageSection.col_1.image}
+						title={imageTextPageSection.col_2.title}
+						content={imageTextPageSection.col_2.content}
+						buttonLabel={imageTextPageSection.col_2.button_label}
+						buttonLink={imageTextPageSection.col_2.button_link}
 					/>
 				</>
 			);

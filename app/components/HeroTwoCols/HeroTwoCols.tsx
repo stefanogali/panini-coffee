@@ -14,9 +14,9 @@ export default function HeroTwoCols({
 	image,
 }: HeroTwoColsProps) {
 	return (
-		<section className="flex h-[calc(100vh-var(--headerHeight))] max-h-hero-max-height overflow-hidden">
+		<section className="flex overflow-hidden">
 			<div className="flex items-center basis-1/2">
-				<div className="ml-auto pl-5 pr-28 xl:w-half-container-xl">
+				<div className="ml-auto pl-5 pr-24 xl:w-half-container-xl">
 					<h1 className="font-bold mb-7">{title}</h1>
 					<p className="mb-5">{firstParagraph}</p>
 					<p>{secondParagraph}</p>
@@ -24,7 +24,7 @@ export default function HeroTwoCols({
 			</div>
 			<div className="basis-1/2">
 				<Image
-					className={`w-full`}
+					className="aspect-square object-cover w-full h-full max-h-[700px]"
 					src={image.url}
 					width={image.width}
 					height={image.height}
