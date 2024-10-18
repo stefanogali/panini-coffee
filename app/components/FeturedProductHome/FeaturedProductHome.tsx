@@ -2,7 +2,7 @@ import Link from "next/link";
 import Button from "../Button/Button";
 import Image from "next/image";
 
-export default function FeaturedProductHome({ product }: { product: FeaturedProduct }) {
+export default function FeaturedProductHome({ product }: { product: ShortDescriptionProduct }) {
 	return (
 		<section className="bg-white mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat">
 			<div className="container px-5 flex items-center py-20">

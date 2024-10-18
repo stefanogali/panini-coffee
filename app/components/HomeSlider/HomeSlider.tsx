@@ -6,7 +6,9 @@ import Link from "next/link";
 import Button from "../Button/Button";
 
 export default async function HomeSlider() {
-	const products: FeaturedProduct[] = await getWPJSON("wp-json/custom/v1/products");
+	const products: ShortDescriptionProduct[] = await getWPJSON("wp-json/custom/v1/products");
+
+	// console.dir(products, { depth: null });
 
 	const SliderContent = products.map((product, index) => {
 		return (
@@ -16,14 +18,17 @@ export default async function HomeSlider() {
 				alt={product.image.alt}
 				width={product.image.width}
 				height={product.image.height}
-				className="w-full max-w-[100px] h-full max-h-[170px] drop-shadow-xl">
-				<h4 className="font-bold my-7">{product.title}</h4>
-				<p className="text-center">
-					{product.short_description.split(" ").slice(0, 16).join(" ") + "..."}
-				</p>
-				<Link className="mt-auto" href={`/product/${product.slug}`}>
-					<Button className="border-[3px] border-background uppercase">Look Product</Button>
-				</Link>
+				imageClassName="w-full max-w-[100px] h-full max-h-[170px] drop-shadow-xl"
+				className="text-center">
+				<>
+					<h4 className="font-bold my-7">{product.title}</h4>
+					<p className="text-center">
+						{product.short_description.split(" ").slice(0, 16).join(" ") + "..."}
+					</p>
+					<Link className="mt-auto" href={`/product/${product.slug}`}>
+						<Button className="border-[3px] border-background uppercase">Look Product</Button>
+					</Link>
+				</>
 			</ProductCard>
 		);
 	});

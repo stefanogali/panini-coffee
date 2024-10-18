@@ -149,7 +149,7 @@ export default function ProductOverview({ product, variations }: ProductOverview
 				width={285}
 				height={470}
 				alt={product.images[0]?.alt}
-				className="w-full max-w-[285px] h-full max-h-[470px] drop-shadow-xl"
+				imageClassName="w-full max-w-[285px] h-full max-h-[470px] drop-shadow-xl"
 			/>
 			<div>
 				<h1 className="font-bold text-[40px] mb-5">{product.name}</h1>

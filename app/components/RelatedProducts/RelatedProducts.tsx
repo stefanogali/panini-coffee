@@ -21,7 +21,7 @@ export default function RelatedProducts({ products }: { products: SingleProduct[
 								alt="Related product"
 								width={172}
 								height={280}
-								className="w-full max-w-[172px] h-full max-h-[280px] drop-shadow-xl">
+								imageClassName="w-full max-w-[172px] h-full max-h-[280px] drop-shadow-xl">
 								<h4 className="font-bold my-7">{relatedProduct.name}</h4>
 								<p
 									className="text-center"

@@ -2,7 +2,7 @@ type PageMeta<T> = {
     id: number;
     slug: string,
     acf_field_groups: T[];
-    featured_product?: FeaturedProduct
+    featured_product?: ShortDescriptionProduct
 };
 
 type FieldGroup<F> = {
@@ -19,7 +19,7 @@ type Image = {
     height: number
 }
 
-type FeaturedProduct = {
+type ShortDescriptionProduct = {
 	title: string;
 	slug: string;
 	short_description: string;

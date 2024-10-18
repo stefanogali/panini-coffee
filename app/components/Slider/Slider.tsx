@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 
 type SliderProps = {
 	components: ReactElement[];
-	pagination: boolean;
+	pagination?: boolean;
 } & SwiperProps;
 
 export default function Slider(props: SliderProps) {
