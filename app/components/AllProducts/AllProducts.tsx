@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import ProductCard from "../ProductCard/ProductCad";
+import ProductCard from "../ProductCard/ProductCard";
 import ProductCategories from "../ProductCategories/ProductCategories";
 import SettingsWheel from "@/app/icons/SettingsWheel";
 import Button from "../Button/Button";

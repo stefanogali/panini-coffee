@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Button from "../Button/Button";
-import ProductCard from "../ProductCard/ProductCad";
+import ProductCard from "../ProductCard/ProductCard";
 
 type ProductOverviewProps = {
 	product: SingleProduct;

@@ -1,4 +1,4 @@
-import ProductCard from "../ProductCard/ProductCad";
+import ProductCard from "../ProductCard/ProductCard";
 import Button from "../Button/Button";
 import Link from "next/link";
 

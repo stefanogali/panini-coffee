@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import ProductCard from "../ProductCard/ProductCad";
+import ProductCard from "../ProductCard/ProductCard";
 import Link from "next/link";
 import Button from "../Button/Button";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
