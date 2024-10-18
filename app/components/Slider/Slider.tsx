@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import ProductCard from "../ProductCard/ProductCard";
-import Link from "next/link";
+import { useState, useRef, ReactElement } from "react";
+import { Pagination } from "swiper/modules";
 import Button from "../Button/Button";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
@@ -10,16 +9,32 @@ import { Swiper as SwiperType } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 type SliderProps = {
-	productsSpecs: FeaturedProduct[];
+	components: ReactElement[];
+	pagination: boolean;
 } & SwiperProps;
 
 export default function Slider(props: SliderProps) {
 	const [renderSwiper, setRenderSwiper] = useState(false);
-	const { productsSpecs, ...sliderProps } = props;
+	const { components, pagination, ...sliderProps } = props;
 
 	const swiperRef = useRef<SwiperType | null>(null);
+
+	const paginationConfig = () => {
+		const paginationObj = {
+			...(pagination
+				? {
+						pagination: {
+							clickable: true,
+						},
+						modules: [Pagination],
+				  }
+				: {}),
+		};
+		return paginationObj;
+	};
 
 	const handlePrev = () => {
 		if (swiperRef.current) {
@@ -34,32 +49,16 @@ export default function Slider(props: SliderProps) {
 	};
 
 	return (
-		<div className="text-background mt-10 relative">
+		<div className="">
 			<Swiper
 				{...sliderProps}
+				{...paginationConfig()}
 				onAfterInit={() => setRenderSwiper(true)}
 				onSwiper={(swiper) => {
 					swiperRef.current = swiper;
 				}}>
 				{renderSwiper &&
-					productsSpecs.map((product, index) => (
-						<SwiperSlide key={index}>
-							<ProductCard
-								src={product.image.url}
-								alt={product.image.alt}
-								width={product.image.width}
-								height={product.image.height}
-								className="w-full max-w-[100px] h-full max-h-[170px] drop-shadow-xl">
-								<h4 className="font-bold my-7">{product.title}</h4>
-								<p className="text-center">
-									{product.short_description.split(" ").slice(0, 16).join(" ") + "..."}
-								</p>
-								<Link className="mt-auto" href={`/product/${product.slug}`}>
-									<Button className="border-[3px] border-background uppercase">Look Product</Button>
-								</Link>
-							</ProductCard>
-						</SwiperSlide>
-					))}
+					components.map((component, index) => <SwiperSlide key={index}>{component}</SwiperSlide>)}
 			</Swiper>
 			<Button
 				onClick={handlePrev}

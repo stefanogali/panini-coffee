@@ -28,6 +28,18 @@ body {
 	@apply !h-auto;
 }
 
+.swiper-pagination {
+	@apply !bottom-0;
+}
+
+.swiper-pagination-bullet-active {
+	@apply !bg-oliveGreen;
+}
+
+.swiper-pagination-bullet {
+	@apply !bg-none border-[1px] border-oliveGreen !opacity-100;
+}
+
 @keyframes bounceIn {
 	from,
 	20%,

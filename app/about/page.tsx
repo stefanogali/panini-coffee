@@ -2,6 +2,7 @@ import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "../utils";
 import HeroTwoCols from "../components/HeroTwoCols/HeroTwoCols";
 import Timeline from "../components/Timeline/Timeline";
 import ImageTextTwoCols from "../components/ImageTextTwoCols/ImageTextTwoCols";
+import TestimonialSlider from "../components/TestimonialSlider/TestimonialSlider";
 
 type HeroCol1 = {
 	title: string;
@@ -92,6 +93,7 @@ export default async function Page() {
 					/>
 				</>
 			);
+			pageLayout.push(<TestimonialSlider />);
 		}
 	});
 
