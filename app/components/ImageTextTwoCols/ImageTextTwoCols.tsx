@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Button from "../Button/Button";
 import Link from "next/link";
+import { extractLastSegmentUrl } from "@/app/utils";
 
 type ImageTextTwoColsProps = {
 	image: Image;
@@ -17,9 +18,6 @@ export default function ImageTextTwoCols({
 	buttonLabel,
 	buttonLink,
 }: ImageTextTwoColsProps) {
-	const explodeUrl = buttonLink.split("/").filter((item) => item !== "");
-	const sendTo = `/${explodeUrl[explodeUrl.length - 1]}`;
-
 	return (
 		<section className="pt-36 flex">
 			<div className="basis-1/2">
@@ -35,7 +33,7 @@ export default function ImageTextTwoCols({
 				<div className="mr-auto pr-5 pl-24 xl:w-half-container-xl text-center">
 					<h2 className="font-bold mb-5">{title}</h2>
 					<p>{content}</p>
-					<Link href={sendTo}>
+					<Link href={extractLastSegmentUrl(buttonLink)}>
 						<Button className="border-[3px] border-background uppercase">{buttonLabel}</Button>
 					</Link>
 				</div>

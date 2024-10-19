@@ -41,3 +41,9 @@ export function connectWCApi(){
     });
     return api;
 }
+
+export function extractLastSegmentUrl(url:string) {
+    const explodeUrl = url.split("/").filter((item) => item !== "");
+	const sendTo = `/${explodeUrl[explodeUrl.length - 1]}`;
+    return sendTo;
+}
