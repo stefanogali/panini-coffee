@@ -24,7 +24,7 @@ export default function Nav() {
 					return (
 						<li
 							key={index}
-							className={`${
+							className={`font-bold ${
 								item === "Home" && pathname === "/"
 									? "text-orange"
 									: `/${item.toLowerCase()}` === pathname
