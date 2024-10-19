@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useEffect, useRef, useState, forwardRef } from "react";
 import flagIcon from "../../icons/flag.svg";
 import Image from "next/image";
@@ -56,15 +57,18 @@ const TimelineStep = ({
 }: TimelineStepsProps) => {
 	return (
 		<div
-			className={`${width} h-[5px] flex items-center bg-oliveGreen absolute ${
-				top ? `${top}` : ""
-			} ${bottom ? `${bottom}` : ""} ${left ? `${left}` : ""} ${
-				right ? `${right}` : ""
-			} ${beforeClasses} ${afterClasses} ${isActive ? "visible animate-bounceIn" : "invisible"}`}>
-			<div
-				className={`absolute ${textContentLeft ? textContentLeft : ""} ${
-					textContentRight ? textContentRight : ""
-				} -top-2.5  ${textAlign}`}>
+			className={clsx(
+				`${width} h-[5px] flex items-center bg-oliveGreen absolute ${
+					isActive ? "visible animate-bounceIn" : "invisible"
+				}`,
+				top,
+				bottom,
+				left,
+				right,
+				beforeClasses,
+				afterClasses
+			)}>
+			<div className={clsx(`absolute -top-2.5 ${textAlign}`, textContentLeft, textContentRight)}>
 				<h4 className="text-oliveGreen font-bold">{year}</h4>
 				<p>{content}</p>
 			</div>
