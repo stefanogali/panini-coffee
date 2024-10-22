@@ -1,3 +1,7 @@
+type Logo = {
+	logo_url: string;
+};
+
 type PageMeta<T> = {
     id: number;
     slug: string,

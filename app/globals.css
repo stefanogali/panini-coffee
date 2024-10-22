@@ -77,6 +77,54 @@ body {
 	transition-delay: 1000ms;
 }
 
+@layer base {
+	h1 {
+		@apply text-5xl leading-[1em];
+	}
+
+	h2 {
+		@apply text-[40px] leading-[1em];
+	}
+
+	h3 {
+		@apply text-[32px] leading-[1em];
+	}
+	h4 {
+		@apply text-[28px] leading-[1em];
+	}
+	h5 {
+		@apply text-[24px] leading-[1em];
+	}
+	h6 {
+		@apply text-xl leading-[1em];
+	}
+}
+
+@layer utilities {
+	footer #block-7 {
+		@apply font-bold text-oliveGreen mb-7;
+	}
+	footer .brand-details p {
+		@apply text-xl flex items-center mb-2.5;
+	}
+	footer #block-8 p:before,
+	footer #block-9 p:before,
+	footer #block-10 p:before {
+		@apply bg-contain bg-no-repeat inline-block w-8 h-8 mr-2.5;
+		content: "";
+	}
+	footer #block-8 p:before {
+		@apply bg-[url('icons/location.svg')];
+	}
+	footer #block-9 p:before {
+		@apply bg-[url('icons/phone.svg')];
+	}
+	footer #block-10 p:before {
+		@apply bg-[url('icons/email.svg')];
+	}
+}
+
+/* Animations */
 @keyframes bounceIn {
 	from,
 	20%,
@@ -126,49 +174,54 @@ body {
 	animation-name: bounceIn;
 }
 
-@layer base {
-	h1 {
-		@apply text-5xl leading-[1em];
+@keyframes loading {
+	0% {
+		transform: perspective(250px) rotateX(0deg) rotateY(0deg);
 	}
 
-	h2 {
-		@apply text-[40px] leading-[1em];
+	50% {
+		transform: perspective(250px) rotateX(180deg) rotateY(0deg);
 	}
 
-	h3 {
-		@apply text-[32px] leading-[1em];
-	}
-	h4 {
-		@apply text-[28px] leading-[1em];
-	}
-	h5 {
-		@apply text-[24px] leading-[1em];
-	}
-	h6 {
-		@apply text-xl leading-[1em];
+	100% {
+		transform: perspective(250px) rotateX(180deg) rotateY(-180deg);
 	}
 }
 
-@layer utilities {
-	footer #block-7 {
-		@apply font-bold text-oliveGreen mb-7;
+@keyframes loading-icon {
+	0% {
+		transform: perspective(250px) rotateX(0deg) rotateY(0deg);
 	}
-	footer .brand-details p {
-		@apply text-xl flex items-center mb-2.5;
+
+	15% {
+		transform: perspective(250px) rotateX(0deg) rotateY(0deg);
 	}
-	footer #block-8 p:before,
-	footer #block-9 p:before,
-	footer #block-10 p:before {
-		@apply bg-contain bg-no-repeat inline-block w-8 h-8 mr-2.5;
-		content: "";
+
+	16% {
+		transform: perspective(250px) rotateX(180deg) rotateY(0deg);
 	}
-	footer #block-8 p:before {
-		@apply bg-[url('icons/location.svg')];
+
+	50% {
+		transform: perspective(250px) rotateX(180deg) rotateY(0deg);
 	}
-	footer #block-9 p:before {
-		@apply bg-[url('icons/phone.svg')];
+
+	65% {
+		transform: perspective(250px) rotateX(180deg) rotateY(0deg);
 	}
-	footer #block-10 p:before {
-		@apply bg-[url('icons/email.svg')];
+
+	66% {
+		transform: perspective(250px) rotateX(180deg) rotateY(180deg);
 	}
+
+	100% {
+		transform: perspective(250px) rotateX(180deg) rotateY(180deg);
+	}
+}
+
+.animate-container {
+	animation: loading 2s infinite;
+}
+
+.animate-image {
+	animation: loading-icon 2s infinite;
 }
