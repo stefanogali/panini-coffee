@@ -42,14 +42,28 @@ export default async function HomeSlider() {
 		);
 	});
 	return (
-		<section className="pt-36">
+		<section className="pt-20 md:pt-36">
 			<div className="container px-5">
 				<Suspense fallback={<></>}>
 					<div className="text-background relative">
 						<Slider
 							spaceBetween={20}
-							slidesPerView={4}
+							// slidesPerView={1}
 							navigation={{ nextEl: ".arrow-left", prevEl: ".arrow-right" }}
+							breakpoints={{
+								640: {
+									slidesPerView: 1,
+								},
+								768: {
+									slidesPerView: 2,
+								},
+								1024: {
+									slidesPerView: 3,
+								},
+								1280: {
+									slidesPerView: 4,
+								},
+							}}
 							grabCursor={true}
 							loop={true}
 							effect={"fade"}

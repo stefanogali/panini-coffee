@@ -23,7 +23,7 @@ type AboutHomeProps = {
 const TextContent = ({ title, content, buttonLabel, buttonLink }: AboutHomeProps) => {
 	const formattedContent = content.replace(/\r\n/g, "<br />");
 	return (
-		<div className="mr-28">
+		<div className="mb-7 lg:mb-0 lg:mr-28 lg:basis-1/2">
 			<h2 className="mb-12 font-bold">{title}</h2>
 			<p dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
 			<Link href={buttonLink}>
@@ -66,15 +66,15 @@ export default function AboutHome({
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
 	return (
-		<section className={`container px-5 pt-36 reveal ${isIntersected ? "visible" : ""}`}>
-			<div className={`grid gap-5 grid-cols-2`} ref={sectionRef}>
+		<section className={`container px-5 pt-20 md:pt-36 reveal ${isIntersected ? "visible" : ""}`}>
+			<div className={`flex flex-col lg:flex-row`} ref={sectionRef}>
 				<TextContent
 					title={title}
 					content={content}
 					buttonLabel={buttonLabel}
 					buttonLink={extractLastSegmentUrl(buttonLink)}
 				/>
-				<div className={`grid gap-5 grid-cols-2`}>
+				<div className={`lg:basis-1/2 grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-x-5`}>
 					<Card cards={cardContent || []} />
 				</div>
 			</div>

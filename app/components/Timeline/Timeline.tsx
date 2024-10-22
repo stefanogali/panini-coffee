@@ -172,7 +172,7 @@ export default function Timeline({
 
 	return (
 		<>
-			<section className="pt-36">
+			<section className="pt-20 md:pt-36">
 				<h3 className="text-center font-bold mb-5">Our timeline</h3>
 				<div
 					className="flex flex-col justify-start items-center"

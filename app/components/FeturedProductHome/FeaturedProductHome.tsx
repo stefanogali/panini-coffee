@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const observerOptions = {
 	rootMargin: "0px",
-	threshold: 0.5,
+	threshold: 0.4,
 };
 
 export default function FeaturedProductHome({ product }: { product: ShortDescriptionProduct }) {
@@ -17,13 +17,13 @@ export default function FeaturedProductHome({ product }: { product: ShortDescrip
 
 	return (
 		<section
-			className="bg-white mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat"
+			className="bg-white mt-20 md:mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat"
 			ref={sectionRef}>
 			<div
-				className={`container px-5 flex items-center py-20 reveal ${
+				className={`container px-5 flex flex-col-reverse md:flex-row items-center py-20 reveal ${
 					isIntersected ? "visible" : ""
 				}`}>
-				<div className="text-background pr-20">
+				<div className="text-background md:pr-20">
 					<h2 className="font-bold mb-10">{product.title}</h2>
 					<p>{product.short_description}</p>
 					<Link className="mt-auto" href={`/product/${product.slug}`}>
@@ -36,7 +36,7 @@ export default function FeaturedProductHome({ product }: { product: ShortDescrip
 						width={product.image.width}
 						height={product.image.height}
 						alt={product.image.alt}
-						className="max-w-56 drop-shadow-xl"
+						className="max-w-[180px] mb-7 md:mb-0 mb:max-w-56 drop-shadow-xl"
 					/>
 				</div>
 			</div>

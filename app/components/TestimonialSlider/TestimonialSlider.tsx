@@ -36,7 +36,7 @@ export default async function TestimonialSlider() {
 	});
 
 	return (
-		<section className="pt-36">
+		<section className="pt-20 md:pt-36">
 			<div className="container px-5">
 				<Suspense fallback={<></>}>
 					<div className="text-white relative">

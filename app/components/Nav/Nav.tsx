@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Cart from "@/app/icons/Cart";
@@ -91,6 +91,10 @@ export default function Nav() {
 	const handleClick = () => {
 		setIsOpen((prev) => !prev);
 	};
+
+	useEffect(() => {
+		setIsOpen(false);
+	}, [pathname]);
 
 	return (
 		<>

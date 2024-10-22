@@ -12,7 +12,7 @@ type FooterProps = {
 const FooterColumn1 = ({ content }: { content: string }) => {
 	return (
 		<>
-			<div className="flex gap-x-16 basis-1/3">
+			<div className="flex gap-x-16 basis-1/3 grow lg:grow-0">
 				<div className="brand-details" dangerouslySetInnerHTML={{ __html: content }}></div>
 			</div>
 		</>
@@ -21,7 +21,7 @@ const FooterColumn1 = ({ content }: { content: string }) => {
 
 const FooterColumn2 = () => {
 	return (
-		<div className="basis-1/3">
+		<div className="basis-1/3 grow lg:grow-0">
 			<h5 className="mb-7">Contrary to popular belief, Lorem Ipsum is not simply random text.</h5>
 			<Form>
 				<Input className="w-full bg-transparent border-b-[1px]" />
@@ -33,7 +33,7 @@ const FooterColumn2 = () => {
 
 const FooterColumn3 = () => {
 	return (
-		<div className="basis-1/3">
+		<div className="basis-1/3 grow lg:grow-0">
 			<div className="flex gap-16">
 				<div className="flex flex-col">
 					<Link
@@ -73,14 +73,14 @@ export default async function Footer({ logoUrl }: FooterProps) {
 	const { content } = footerEditable;
 
 	return (
-		<footer className="py-40">
+		<footer className="py-20 md:py-40">
 			<div className="container px-5">
 				<div className="flex justify-center">
 					<div className="flex-initial w-32 mb-16">
 						<Image src={logoUrl} width={128} height={40} alt="Panini coffee logo" />
 					</div>
 				</div>
-				<div className="flex gap-16">
+				<div className="flex flex-col gap-12 flex-wrap md:flex-row md:gap-8 lg:flex-nowrap lg:gap-16">
 					<FooterColumn1 content={content} />
 					<FooterColumn2 />
 					<FooterColumn3 />

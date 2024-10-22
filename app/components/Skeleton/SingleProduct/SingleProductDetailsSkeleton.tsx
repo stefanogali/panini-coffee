@@ -1,6 +1,6 @@
 export default function SingleProductDetailsSkeleton() {
 	return (
-		<div className="mt-36 animate-pulse">
+		<div className="mt-20 md:mt-36 animate-pulse">
 			<div className="flex flex-col">
 				<div className="flex">
 					<div className="bg-gray-300 h-10 basis-32 grow-0 shrink mr-1"></div>

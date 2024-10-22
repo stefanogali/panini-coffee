@@ -19,7 +19,7 @@ export default function ImageTextTwoCols({
 	buttonLink,
 }: ImageTextTwoColsProps) {
 	return (
-		<section className="pt-36 flex">
+		<section className="pt-20 md:pt-36 flex">
 			<div className="basis-1/2">
 				<Image
 					className="aspect-square object-cover w-full h-full max-h-[700px]"

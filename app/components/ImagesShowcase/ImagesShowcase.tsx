@@ -16,7 +16,7 @@ type ImagesShowcaseProps = {
 
 const observerOptions = {
 	rootMargin: "0px",
-	threshold: 0.5,
+	threshold: 0.3,
 };
 
 export default function ImagesShowcase({
@@ -28,43 +28,45 @@ export default function ImagesShowcase({
 	const sectionRef = useRef(null);
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
-	console.log("isIntersected", isIntersected);
-
 	return (
-		<section className="pt-36" ref={sectionRef}>
-			<div className="grid grid-cols-3">
-				{images.map((image, index) => {
-					const delayClass = `delay-${index * 200}`;
-					return (
-						<Fragment key={image.id}>
-							{index === 4 && (
-								<div
-									className={`aspect-square 2xl:aspect-auto max-h-[700px] bg-white text-background px-12 text-center flex flex-col items-center justify-center reveal ${delayClass} ${
-										isIntersected ? "visible" : ""
-									}`}>
-									<h2 className="font-bold">{title}</h2>
+		<section className="pt-20 md:pt-36">
+			<div ref={sectionRef}>
+				<div className="grid grid-cols-2 lg:grid-cols-3">
+					{images.map((image, index) => {
+						const delayClass = `delay-${index * 200}`;
+						const isLastTwo = index >= images.length - 1;
+						const colSpanClass = isLastTwo ? "col-span-2 md:col-span-1" : "";
+						return (
+							<Fragment key={image.id}>
+								{index === 4 && (
+									<div
+										className={`py-7 max-h-[700px] ${colSpanClass} bg-white text-background px-12 text-center flex flex-col items-center justify-center reveal md:py-0 lg:aspect-square 2xl:aspect-auto ${delayClass} ${
+											isIntersected ? "visible" : ""
+										}`}>
+										<h2 className="font-bold">{title}</h2>
 
-									<Link href={extractLastSegmentUrl(buttonLink)}>
-										<Button className="text-background border-background border-[3px]">
-											{buttonLabel}
-										</Button>
-									</Link>
+										<Link href={extractLastSegmentUrl(buttonLink)}>
+											<Button className="text-background border-background border-[3px]">
+												{buttonLabel}
+											</Button>
+										</Link>
+									</div>
+								)}
+								<div className={`max-h-[700px] lg:aspect-square 2xl:aspect-auto ${colSpanClass}`}>
+									<Image
+										className={`w-full h-full object-cover reveal ${
+											index + 1 === images.length ? "delay-1000" : delayClass
+										} ${isIntersected ? "visible" : ""}`}
+										src={image.url}
+										width={image.width}
+										height={image.height}
+										alt="Picture of the author"
+									/>
 								</div>
-							)}
-							<div className="aspect-square 2xl:aspect-auto max-h-[700px]">
-								<Image
-									className={`w-full h-full object-cover reveal ${
-										index + 1 === images.length ? "delay-1000" : delayClass
-									} ${isIntersected ? "visible" : ""}`}
-									src={image.url}
-									width={image.width}
-									height={image.height}
-									alt="Picture of the author"
-								/>
-							</div>
-						</Fragment>
-					);
-				})}
+							</Fragment>
+						);
+					})}
+				</div>
 			</div>
 		</section>
 	);
