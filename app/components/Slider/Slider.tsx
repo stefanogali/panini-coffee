@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, ReactElement } from "react";
+import { useIsIntersecting } from "@/app/hooks/useIsIntersecting";
 import { Pagination } from "swiper/modules";
 import Button from "../Button/Button";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
@@ -12,13 +13,24 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
 type SliderProps = {
+	introText?: ReactElement;
 	components: ReactElement[];
 	pagination?: boolean;
+	useObserver?: boolean;
 } & SwiperProps;
+
+const observerOptions = {
+	rootMargin: "0px",
+	threshold: 0.5,
+};
 
 export default function Slider(props: SliderProps) {
 	const [renderSwiper, setRenderSwiper] = useState(false);
-	const { components, pagination, ...sliderProps } = props;
+	const { components, pagination, introText, useObserver, ...sliderProps } = props;
+	const sectionRef = useRef(null);
+	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
+
+	// console.log("sliderisIntersected", isIntersected);
 
 	const swiperRef = useRef<SwiperType | null>(null);
 
@@ -49,7 +61,10 @@ export default function Slider(props: SliderProps) {
 	};
 
 	return (
-		<div className="">
+		<div
+			ref={sectionRef}
+			className={`${useObserver ? "reveal" : ""} ${isIntersected ? "visible" : ""}`}>
+			{introText}
 			<Swiper
 				{...sliderProps}
 				{...paginationConfig()}

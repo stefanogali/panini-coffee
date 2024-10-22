@@ -1,7 +1,11 @@
+"use client";
+
+import { useRef } from "react";
 import Button from "../Button/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { extractLastSegmentUrl } from "@/app/utils";
+import { useIsIntersecting } from "@/app/hooks/useIsIntersecting";
 
 type AboutCard = {
 	icon: Image;
@@ -47,6 +51,10 @@ const Card = ({ cards }: { cards: AboutCard[] }) => {
 	});
 };
 
+const observerOptions = {
+	rootMargin: "0px",
+	threshold: 0.5,
+};
 export default function AboutHome({
 	title,
 	content,
@@ -54,16 +62,19 @@ export default function AboutHome({
 	buttonLink,
 	cardContent,
 }: AboutHomeProps) {
+	const sectionRef = useRef(null);
+	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
+
 	return (
-		<section className="container px-5 pt-36">
-			<div className="grid gap-5 grid-cols-2">
+		<section className={`container px-5 pt-36 reveal ${isIntersected ? "visible" : ""}`}>
+			<div className={`grid gap-5 grid-cols-2`} ref={sectionRef}>
 				<TextContent
 					title={title}
 					content={content}
 					buttonLabel={buttonLabel}
 					buttonLink={extractLastSegmentUrl(buttonLink)}
 				/>
-				<div className="grid gap-5 grid-cols-2">
+				<div className={`grid gap-5 grid-cols-2`}>
 					<Card cards={cardContent || []} />
 				</div>
 			</div>

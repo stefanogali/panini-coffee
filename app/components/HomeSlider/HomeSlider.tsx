@@ -10,6 +10,15 @@ export default async function HomeSlider() {
 
 	// console.dir(products, { depth: null });
 
+	const SliderIntroText = () => {
+		return (
+			<>
+				<h2 className="text-center font-bold text-white">Choose from our products</h2>
+				<h3 className="text-center font-bold text-oliveGreen mb-10">Recently added products</h3>
+			</>
+		);
+	};
+
 	const SliderContent = products.map((product, index) => {
 		return (
 			<ProductCard
@@ -35,10 +44,8 @@ export default async function HomeSlider() {
 	return (
 		<section className="pt-36">
 			<div className="container px-5">
-				<h2 className="text-center font-bold">Choose from our products</h2>
-				<h3 className="text-center font-bold text-oliveGreen">Recently added products</h3>
 				<Suspense fallback={<></>}>
-					<div className="text-background mt-10 relative">
+					<div className="text-background relative">
 						<Slider
 							spaceBetween={20}
 							slidesPerView={4}
@@ -46,7 +53,9 @@ export default async function HomeSlider() {
 							grabCursor={true}
 							loop={true}
 							effect={"fade"}
+							introText={SliderIntroText()}
 							components={SliderContent}
+							useObserver={true}
 						/>
 					</div>
 				</Suspense>

@@ -77,3 +77,8 @@ type Attributes = {
 	variation: boolean;
 	options: string[];
 };
+
+type ObserverOptions = {
+	rootMargin: string,
+	threshold: number | number[],
+}

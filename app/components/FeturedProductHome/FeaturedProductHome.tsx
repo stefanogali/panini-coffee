@@ -1,11 +1,28 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
+import { useIsIntersecting } from "@/app/hooks/useIsIntersecting";
 import Button from "../Button/Button";
 import Image from "next/image";
 
+const observerOptions = {
+	rootMargin: "0px",
+	threshold: 0.5,
+};
+
 export default function FeaturedProductHome({ product }: { product: ShortDescriptionProduct }) {
+	const sectionRef = useRef(null);
+	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
+
 	return (
-		<section className="bg-white mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat">
-			<div className="container px-5 flex items-center py-20">
+		<section
+			className="bg-white mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat"
+			ref={sectionRef}>
+			<div
+				className={`container px-5 flex items-center py-20 reveal ${
+					isIntersected ? "visible" : ""
+				}`}>
 				<div className="text-background pr-20">
 					<h2 className="font-bold mb-10">{product.title}</h2>
 					<p>{product.short_description}</p>

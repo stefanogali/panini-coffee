@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { useIsIntersecting } from "@/app/hooks/useIsIntersecting";
 import Button from "../Button/Button";
 
 type HomeVideoProps = {
@@ -7,7 +11,15 @@ type HomeVideoProps = {
 	buttonLink: string;
 };
 
+const observerOptions = {
+	rootMargin: "0px",
+	threshold: 0,
+};
+
 export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideoProps) {
+	const sectionRef = useRef(null);
+	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
+
 	return (
 		<section className="hero-video">
 			<div className="h-[100vh] relative">
@@ -16,7 +28,11 @@ export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }:
 					{/* <source src="movie.ogg" type="video/ogg"> */}
 					Your browser does not support the video tag.
 				</video>
-				<div className="container px-5 absolute bottom-0 left-0 right-0">
+				<div
+					className={`container px-5 absolute bottom-0 left-0 right-0 reveal ${
+						isIntersected ? "visible" : ""
+					}`}
+					ref={sectionRef}>
 					<div className="max-w-[50%] mb-40">
 						<h2 className="text-white font-bold mb-7">{heroContent}</h2>
 						<h4>

@@ -40,6 +40,43 @@ body {
 	@apply !bg-none border-[1px] border-oliveGreen !opacity-100;
 }
 
+/* Element before intersection */
+.reveal {
+	opacity: 0;
+	transform: translate3d(0, 100px, 0);
+	transition: opacity 0.8s, transform 0.8s;
+}
+
+/* Element after intersection */
+.reveal.visible {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+.delay-0 {
+	transition-delay: 0ms;
+}
+
+.delay-200 {
+	transition-delay: 200ms;
+}
+
+.delay-400 {
+	transition-delay: 400ms;
+}
+
+.delay-600 {
+	transition-delay: 600ms;
+}
+
+.delay-800 {
+	transition-delay: 800ms;
+}
+
+.delay-1000 {
+	transition-delay: 1000ms;
+}
+
 @keyframes bounceIn {
 	from,
 	20%,
