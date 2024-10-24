@@ -22,7 +22,7 @@ export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }:
 
 	return (
 		<section className="hero-video">
-			<div className="h-[100vh] max-h-[768px] relative">
+			<div className="h-[100vh] max-h-[1024px] relative">
 				<video loop autoPlay muted className="h-full w-full object-cover relative">
 					<source src={url} type="video/mp4" />
 					{/* <source src="movie.ogg" type="video/ogg"> */}
