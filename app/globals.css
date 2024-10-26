@@ -8,7 +8,13 @@
 	--oliveGreen: #969e4d;
 	--orange: #ffbb00;
 
-	--headerHeight: 120px;
+	--headerHeight: 7.5rem;
+
+	--headingMarginBottom: 1.875rem;
+	--sectionVerticalSpace: 5rem;
+	--sectionVerticalSpaceLg: 9rem;
+
+	--textContainerPaddingRight: 7rem;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -97,6 +103,9 @@ body {
 	}
 	h6 {
 		@apply text-xl leading-[1em];
+	}
+	p {
+		@apply [&:not(:last-of-type)]:mb-5;
 	}
 }
 

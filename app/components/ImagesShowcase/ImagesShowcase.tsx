@@ -29,7 +29,7 @@ export default function ImagesShowcase({
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
 	return (
-		<section className="pt-20 md:pt-36">
+		<section className="pt-section-vertical md:pt-section-vertical-lg">
 			<div ref={sectionRef}>
 				<div className="grid grid-cols-2 lg:grid-cols-3">
 					{images.map((image, index) => {

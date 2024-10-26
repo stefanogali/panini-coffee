@@ -34,6 +34,17 @@ const config: Config = {
         spinWheel: 'spin 3s linear infinite',
        
       },
+      margin: {
+        'heading-margin-bottom': 'var(--headingMarginBottom)',
+        'heading-margin-bottom-lg': 'calc(var(--headingMarginBottom) * 1.3)',
+        'section-vertical': 'var(--sectionVerticalSpace)',
+        'section-vertical-lg': 'var(--sectionVerticalSpaceLg)',
+      },
+      padding:{
+        'half-container-padding-right': 'var(--textContainerPaddingRight)',
+        'section-vertical': 'var(--sectionVerticalSpace)',
+        'section-vertical-lg': 'var(--sectionVerticalSpaceLg)',
+      },
       maxHeight: {
         'hero-max-height': '768px',
       },

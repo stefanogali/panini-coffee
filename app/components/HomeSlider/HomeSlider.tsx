@@ -42,7 +42,7 @@ export default async function HomeSlider() {
 		);
 	});
 	return (
-		<section className="pt-20 md:pt-36">
+		<section className="pt-section-vertical md:pt-section-vertical-lg">
 			<div className="container px-5">
 				<Suspense fallback={<></>}>
 					<div className="text-background relative">

@@ -14,13 +14,11 @@ export type Testimonial = {
 export default async function TestimonialSlider() {
 	const testimonials: Testimonial[] = await getWPJSON("wp-json/custom/v1/testimonials");
 
-	const SliderIntroText = () => {
-		return (
-			<>
-				<h2 className="font-bold mb-7 text-center">Our Testimonials</h2>
-			</>
-		);
-	};
+	const SliderIntroText = (
+		<>
+			<h2 className="font-bold mb-7 text-center">Our Testimonials</h2>
+		</>
+	);
 
 	const SliderContent = testimonials.map((testimonial) => {
 		return (
@@ -36,7 +34,7 @@ export default async function TestimonialSlider() {
 	});
 
 	return (
-		<section className="pt-20 md:pt-36">
+		<section className="pt-section-vertical md:pt-section-vertical-lg">
 			<div className="container px-5">
 				<Suspense fallback={<></>}>
 					<div className="text-white relative">
@@ -47,7 +45,7 @@ export default async function TestimonialSlider() {
 							grabCursor={true}
 							loop={true}
 							effect={"fade"}
-							introText={SliderIntroText()}
+							introText={SliderIntroText}
 							components={SliderContent}
 							pagination={true}
 						/>

@@ -17,14 +17,14 @@ export default function FeaturedProductHome({ product }: { product: ShortDescrip
 
 	return (
 		<section
-			className="bg-white mt-20 md:mt-36 bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat"
+			className="bg-white mt-section-vertical md:mt-section-vertical-lg bg-[url('images/logo-waves.svg')] bg-cover bg-center bg-no-repeat"
 			ref={sectionRef}>
 			<div
 				className={`container px-5 flex flex-col-reverse md:flex-row items-center py-20 reveal ${
 					isIntersected ? "visible" : ""
 				}`}>
-				<div className="text-background md:pr-20">
-					<h2 className="font-bold mb-10">{product.title}</h2>
+				<div className="text-background md:pr-half-container-padding-right">
+					<h2 className="font-bold mb-heading-margin-bottom">{product.title}</h2>
 					<p>{product.short_description}</p>
 					<Link className="mt-auto" href={`/product/${product.slug}`}>
 						<Button className="border-[3px] border-background uppercase">Look Product</Button>
