@@ -35,20 +35,22 @@ const config: Config = {
        
       },
       margin: {
+        'heading-margin-bottom-sm': 'calc(var(--headingMarginBottom) * 0.8)',
         'heading-margin-bottom': 'var(--headingMarginBottom)',
         'heading-margin-bottom-lg': 'calc(var(--headingMarginBottom) * 1.3)',
         'section-vertical': 'var(--sectionVerticalSpace)',
-        'section-vertical-lg': 'var(--sectionVerticalSpaceLg)',
+        'section-vertical-lg': 'calc(var(--sectionVerticalSpace) * 1.8)',
       },
       padding:{
         'half-container-padding-right': 'var(--textContainerPaddingRight)',
         'section-vertical': 'var(--sectionVerticalSpace)',
-        'section-vertical-lg': 'var(--sectionVerticalSpaceLg)',
+        'section-vertical-lg': 'calc(var(--sectionVerticalSpace) * 1.8)',
       },
       maxHeight: {
         'hero-max-height': '768px',
       },
       width: {
+        'half-container-lg': 'calc(1024px/2)',
         'half-container-xl': 'calc(1280px/2)',
        }
     },

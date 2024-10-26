@@ -16,7 +16,7 @@ export default function HeroTwoCols({
 	return (
 		<section className="flex flex-col-reverse overflow-hidden lg:flex-row">
 			<div className="flex items-center basis-1/2">
-				<div className="ml-auto px-5 lg:pr-half-container-padding-right xl:w-half-container-xl">
+				<div className="ml-auto px-5 lg:pr-half-container-padding-right lg:w-half-container-lg xl:w-half-container-xl">
 					<h1 className="font-bold mb-heading-margin-bottom">{title}</h1>
 					<p>{firstParagraph}</p>
 					<p>{secondParagraph}</p>

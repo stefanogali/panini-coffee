@@ -43,7 +43,7 @@ const BurgerMobile = ({ handleClick, isOpen }: { handleClick: () => void; isOpen
 	return (
 		<Button
 			onClick={handleClick}
-			className="!mt-0 relative z-10 flex flex-col justify-center items-center gap-1 md:hidden">
+			className="!mt-0 relative z-30 flex flex-col justify-center items-center gap-1 md:hidden">
 			<span
 				className={`bg-white block transition-all duration-300 ease-out 
 		h-0.5 w-6 rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}></span>
@@ -60,7 +60,7 @@ const BurgerMobile = ({ handleClick, isOpen }: { handleClick: () => void; isOpen
 const NavMobilePanel = ({ pathname, isOpen }: { pathname: string; isOpen: boolean }) => {
 	return (
 		<aside
-			className={`fixed ${
+			className={`fixed z-20 ${
 				isOpen ? "right-0" : "-right-[300px]"
 			} top-0 w-[90%] max-w-[300px] h-full bg-background transition-[right]  md:hidden`}>
 			<ul className={`items-start mt-16 px-7 text-2xl ${isOpen ? "flex flex-col" : "hidden"}`}>

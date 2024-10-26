@@ -12,7 +12,6 @@
 
 	--headingMarginBottom: 1.875rem;
 	--sectionVerticalSpace: 5rem;
-	--sectionVerticalSpaceLg: 9rem;
 
 	--textContainerPaddingRight: 7rem;
 }
@@ -130,6 +129,15 @@ body {
 	}
 	footer #block-10 p:before {
 		@apply bg-[url('icons/email.svg')];
+	}
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 }
 
