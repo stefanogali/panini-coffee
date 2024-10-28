@@ -60,7 +60,7 @@ export default function ImagesShowcase({
 										src={image.url}
 										width={image.width}
 										height={image.height}
-										alt="Picture of the author"
+										alt="Showcase image"
 									/>
 								</div>
 							</Fragment>

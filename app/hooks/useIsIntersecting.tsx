@@ -27,7 +27,7 @@ export function useIsIntersecting(
 		return () => {
 			observer.disconnect();
 		};
-	}, [callback, callbackRef, elementRef, isIntersecting, options]);
+	}, [callback, callbackRef, elementRef, isIntersecting, options, keepWatching]);
 
 	return isIntersecting;
 }

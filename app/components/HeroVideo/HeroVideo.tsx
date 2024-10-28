@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { useIsIntersecting } from "@/app/hooks/useIsIntersecting";
+import { extractLastSegmentUrl } from "@/app/utils";
+import Link from "next/link";
 import Button from "../Button/Button";
 
 type HomeVideoProps = {
@@ -16,7 +18,7 @@ const observerOptions = {
 	threshold: 0,
 };
 
-export default function HeroVideo({ url, heroContent, buttonLabel }: HomeVideoProps) {
+export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideoProps) {
 	const sectionRef = useRef(null);
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
@@ -39,9 +41,11 @@ export default function HeroVideo({ url, heroContent, buttonLabel }: HomeVideoPr
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
 							laudantium
 						</h4>
-						<Button className="font-medium border-[3px] border-oliveGreen bg-oliveGreen">
-							{buttonLabel}
-						</Button>
+						<Link href={extractLastSegmentUrl(buttonLink)}>
+							<Button className="font-medium border-[3px] border-oliveGreen bg-oliveGreen">
+								{buttonLabel}
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

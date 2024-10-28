@@ -8,8 +8,6 @@ import Button from "../Button/Button";
 export default async function HomeSlider() {
 	const products: ShortDescriptionProduct[] = await getWPJSON("wp-json/custom/v1/products");
 
-	// console.dir(products, { depth: null });
-
 	const SliderIntroText = () => {
 		return (
 			<>

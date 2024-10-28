@@ -37,14 +37,7 @@ const Card = ({ cards }: { cards: AboutCard[] }) => {
 	return cards.map((card) => {
 		return (
 			<div className="flex items-start" key={card.icon.id}>
-				<Image
-					src={card.icon.url}
-					alt={card.icon.alt}
-					width={50}
-					height={50}
-					// blurDataURL="data:..." automatically provided
-					// placeholder="blur" // Optional blur-up while loading
-				/>
+				<Image src={card.icon.url} alt={card.icon.alt} width={50} height={50} />
 				<p className="pl-5">{card.content}</p>
 			</div>
 		);

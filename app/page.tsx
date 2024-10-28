@@ -105,6 +105,7 @@ function groupImagesShowcase(imagesShowcaseSection: ImagesShowcaseContent) {
 export default async function Home() {
 	const pageData: PageMeta<FieldGroup<HomePageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
 
+	// retrieve by page slug
 	const pageObjs = retrievePageObj(pageData, "home");
 
 	const pageLayout: React.ReactElement[] = [];
@@ -133,7 +134,6 @@ export default async function Home() {
 						buttonLabel={heroPageSection.button_label}
 						buttonLink={heroPageSection.button_link}
 						url={heroPageSection.hero_video.url}
-						key={pageMeta.id}
 					/>
 					<AboutHome
 						title={aboutPageSection.col_1.section_title}
