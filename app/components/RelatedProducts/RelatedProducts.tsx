@@ -14,6 +14,7 @@ export default function RelatedProducts({ products }: { products: SingleProduct[
 			<h2 className="font-bold mb-7">Related Products</h2>
 			<div className="flex flex-wrap gap-5 items-stretch">
 				{relatedProducts.map((relatedProduct) => {
+					// console.log(relatedProduct);
 					return (
 						<div
 							key={relatedProduct.slug}
