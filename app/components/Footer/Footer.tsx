@@ -73,7 +73,7 @@ export default async function Footer({ logoUrl }: FooterProps) {
 	const { content } = footerEditable;
 
 	return (
-		<footer className="py-20 md:py-40">
+		<footer className="py-section-vertical md:py-section-vertical-lg bg-background text-white">
 			<div className="container px-5">
 				<div className="flex justify-center">
 					<div className="flex-initial w-32 mb-16">

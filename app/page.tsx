@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "./utils";
 import HeroVideo from "./components/HeroVideo/HeroVideo";
 import AboutHome from "./components/AboutHome/AboutHome";
@@ -101,6 +102,12 @@ function groupImagesShowcase(imagesShowcaseSection: ImagesShowcaseContent) {
 		imagesShowcaseSection.image_5,
 	];
 }
+
+export const metadata: Metadata = {
+	title: "Panini Coffee | Starter Ecommerce Next.JS & WordPress template",
+	description:
+		"High-performance ecommerce store built with Next.js and Wordpress as headless CMS with Woocommerce API integration. Clone or fork this template to build your own ecommerce store.",
+};
 
 export default async function Home() {
 	const pageData: PageMeta<FieldGroup<HomePageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");

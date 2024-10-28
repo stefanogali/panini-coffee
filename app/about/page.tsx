@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "../utils";
 import HeroTwoCols from "../components/HeroTwoCols/HeroTwoCols";
 import Timeline from "../components/Timeline/Timeline";
@@ -42,6 +43,12 @@ type ImageTextTwoCols = {
 type HeroTwoColsContent = { first_col: HeroCol1; second_col: HeroCol2 };
 
 type AboutPageContent = HeroTwoColsContent & Timeline & ImageTextTwoCols;
+
+export const metadata: Metadata = {
+	title: "Panini Coffee | About page for Next.JS & WordPress template",
+	description:
+		"High-performance ecommerce store built with Next.js and Wordpress as headless CMS with Woocommerce API integration. Clone or fork this template to build your own ecommerce store.",
+};
 
 export default async function Page() {
 	const pageData: PageMeta<FieldGroup<AboutPageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");

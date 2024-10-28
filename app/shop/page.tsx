@@ -1,7 +1,14 @@
+import { Metadata } from "next";
 import { connectWCApi } from "../utils";
 import AllProducts from "../components/AllProducts/AllProducts";
 
 const woocommerceConnection = connectWCApi();
+
+export const metadata: Metadata = {
+	title: "Panini Coffee | Shop page for Next.JS & WordPress template",
+	description:
+		"High-performance ecommerce store built with Next.js and Wordpress as headless CMS with Woocommerce API integration. Clone or fork this template to build your own ecommerce store.",
+};
 
 export default async function Page({
 	searchParams,
