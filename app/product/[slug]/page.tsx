@@ -11,7 +11,6 @@ export async function generateStaticParams() {
 	const products: { data: SingleProduct[] } = await woocommerceConnection.get("products");
 
 	return products.data.map((product) => {
-		// console.log(product);
 		return { slug: product.slug, id: product.id };
 	});
 }
@@ -28,7 +27,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 	try {
 		[products, reviews] = await Promise.all([
-			woocommerceConnection.get("products"),
+			woocommerceConnection.get("products", {
+				per_page: 100, //max number of products to retrieve on each call. Adjust this number based on the number of products you have
+			}),
 			woocommerceConnection.get("products/reviews"),
 		]);
 	} catch (error) {

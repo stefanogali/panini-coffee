@@ -7,14 +7,12 @@ export default function RelatedProducts({ products }: { products: SingleProduct[
 		const { name, slug, short_description: shortdescription, images: image } = product;
 		return { name, slug, shortdescription, mainProductImage: image[0].src };
 	});
-	// console.log("relatedProduct", relatedProducts);
 
 	return relatedProducts.length > 0 ? (
 		<section className="mt-section-vertical md:mt-section-vertical-lg">
 			<h2 className="font-bold mb-7">Related Products</h2>
 			<div className="flex flex-wrap gap-5 items-stretch">
 				{relatedProducts.map((relatedProduct) => {
-					// console.log(relatedProduct);
 					return (
 						<div
 							key={relatedProduct.slug}

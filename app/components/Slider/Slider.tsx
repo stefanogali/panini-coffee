@@ -30,8 +30,6 @@ export default function Slider(props: SliderProps) {
 	const sectionRef = useRef(null);
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
-	// console.log("sliderisIntersected", isIntersected);
-
 	const swiperRef = useRef<SwiperType | null>(null);
 
 	const paginationConfig = () => {

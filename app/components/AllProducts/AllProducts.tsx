@@ -36,8 +36,6 @@ export default function AllProducts({ products }: AllProductsProps) {
 		return uniqueCategories;
 	}, [products]);
 
-	// console.log("availableCategories", availableCategories);
-
 	const params = useSearchParams();
 	const currentPage = params.get("page");
 	const currentCategory = params.get("category");
