@@ -10,12 +10,14 @@ export default function RelatedProducts({ products }: { products: SingleProduct[
 	// console.log("relatedProduct", relatedProducts);
 
 	return relatedProducts.length > 0 ? (
-		<section className="mt-20 md:mt-36">
+		<section className="mt-section-vertical md:mt-section-vertical-lg">
 			<h2 className="font-bold mb-7">Related Products</h2>
-			<div className="flex gap-5 items-stretch">
+			<div className="flex flex-wrap gap-5 items-stretch">
 				{relatedProducts.map((relatedProduct) => {
 					return (
-						<div key={relatedProduct.slug} className="basis-1/3 shrink-1 text-background flex">
+						<div
+							key={relatedProduct.slug}
+							className="md:basis-[calc(50%-10px)] lg:basis-[calc(33.33%-((20px*2)/3))] shrink-1 text-background flex">
 							<ProductCard
 								src={relatedProduct.mainProductImage}
 								alt="Related product"

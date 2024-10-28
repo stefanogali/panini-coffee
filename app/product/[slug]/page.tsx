@@ -72,9 +72,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 		);
 	}
 
-	// console.dir(product, { depth: null });
-	// console.log(singleProductReviews);
-	// console.dir(product, { depth: null });
 	return (
 		<>
 			<ProductOverview product={product} variations={variations} />

@@ -143,15 +143,15 @@ export default function ProductOverview({ product, variations }: ProductOverview
 	};
 
 	return (
-		<section className="grid grid-cols-2 gap-x-48">
+		<section className="grid md:gap-x-6 lg:gap-x-24 lg:grid-cols-2 xl:gap-x-48">
 			<ProductCard
 				src={product.images[0]?.src}
 				width={285}
 				height={470}
 				alt={product.images[0]?.alt}
-				imageClassName="w-full max-w-[285px] h-full max-h-[470px] drop-shadow-xl"
+				imageClassName="w-full h-full drop-shadow-xl max-w-[40vw] md:max-w-[30vw] lg:max-h-[470px] lg:max-w-[285px]"
 			/>
-			<div>
+			<div className="mt-5 mb:mt-0">
 				<h1 className="font-bold text-[40px] mb-5">{product.name}</h1>
 				{product.type === "variable" && (
 					<h5

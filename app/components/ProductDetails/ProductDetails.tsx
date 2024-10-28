@@ -18,7 +18,7 @@ export default function ProductDetails({ description, reviews }: ProductDetailsP
 	};
 
 	return (
-		<section className="mt-20 md:mt-36">
+		<section className="mt-section-vertical md:mt-section-vertical-lg">
 			<div className="flex">
 				<Button
 					onClick={clickHandler}

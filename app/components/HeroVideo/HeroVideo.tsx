@@ -16,7 +16,7 @@ const observerOptions = {
 	threshold: 0,
 };
 
-export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }: HomeVideoProps) {
+export default function HeroVideo({ url, heroContent, buttonLabel }: HomeVideoProps) {
 	const sectionRef = useRef(null);
 	const isIntersected = useIsIntersecting(observerOptions, sectionRef);
 
