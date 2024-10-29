@@ -116,6 +116,7 @@ const QuantitySelector = ({
 };
 
 export default function ProductOverview({ product, variations }: ProductOverviewProps) {
+	console.log(product);
 	const [initialWeight] = variations.filter((variation) => {
 		return variation.menu_order === 1;
 	});
@@ -149,7 +150,7 @@ export default function ProductOverview({ product, variations }: ProductOverview
 				width={285}
 				height={470}
 				alt={product.images[0]?.alt}
-				imageClassName="w-full h-full drop-shadow-xl max-w-[40vw] md:max-w-[30vw] lg:max-h-[470px] lg:max-w-[285px]"
+				imageClassName="w-full h-auto drop-shadow-xl max-w-[60%]"
 			/>
 			<div className="mt-5 mb:mt-0">
 				<h1 className="font-bold text-[40px] mb-5">{product.name}</h1>
