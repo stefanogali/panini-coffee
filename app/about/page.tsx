@@ -51,7 +51,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const pageData: PageMeta<FieldGroup<AboutPageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
+	const pageData: PageMeta<FieldGroup<AboutPageContent>>[] = await getWPJSON(
+		"wp-json/wp/v2/pages",
+		[]
+	);
 	const pageObjs = retrievePageObj(pageData, "about");
 
 	const pageLayout: React.ReactElement[] = [];

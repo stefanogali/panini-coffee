@@ -28,7 +28,7 @@ type ShortDescriptionProduct = {
 	slug: string;
 	short_description: string;
 	image: Image;
-};
+} ;
 
 type Variations = {
 	id: number;

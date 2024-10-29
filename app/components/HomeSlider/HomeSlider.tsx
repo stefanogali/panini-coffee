@@ -6,7 +6,7 @@ import Link from "next/link";
 import Button from "../Button/Button";
 
 export default async function HomeSlider() {
-	const products: ShortDescriptionProduct[] = await getWPJSON("wp-json/custom/v1/products");
+	const products: ShortDescriptionProduct[] = await getWPJSON("wp-json/custom/v1/products", []);
 
 	const SliderIntroText = () => {
 		return (

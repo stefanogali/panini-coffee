@@ -18,15 +18,17 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const logo: Logo = await getWPJSON("wp-json/custom/v1/logo");
+	const logo: Logo = await getWPJSON("wp-json/custom/v1/logo", {
+		logo_url: "./images/logo-colors.svg",
+	});
 
 	return (
 		<html lang="en">
 			<body className={`${jost.className}  antialiased`}>
 				<main>
-					<Header logoUrl={logo.logo_url} />
+					<Header logoUrl={logo?.logo_url} />
 					{children}
-					<Footer logoUrl={logo.logo_url} />
+					<Footer logoUrl={logo?.logo_url} />
 				</main>
 			</body>
 		</html>

@@ -12,7 +12,7 @@ export type Testimonial = {
 };
 
 export default async function TestimonialSlider() {
-	const testimonials: Testimonial[] = await getWPJSON("wp-json/custom/v1/testimonials");
+	const testimonials: Testimonial[] = await getWPJSON("wp-json/custom/v1/testimonials", []);
 
 	const SliderIntroText = (
 		<>

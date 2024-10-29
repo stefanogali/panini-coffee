@@ -69,7 +69,9 @@ const FooterColumn3 = () => {
 };
 
 export default async function Footer({ logoUrl }: FooterProps) {
-	const footerEditable: { content: string } = await getWPJSON("wp-json/custom/v1/footer");
+	const footerEditable: { content: string } = await getWPJSON("wp-json/custom/v1/footer", {
+		content: "",
+	});
 	const { content } = footerEditable;
 
 	return (

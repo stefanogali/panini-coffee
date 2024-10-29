@@ -110,7 +110,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-	const pageData: PageMeta<FieldGroup<HomePageContent>>[] = await getWPJSON("wp-json/wp/v2/pages");
+	const pageData: PageMeta<FieldGroup<HomePageContent>>[] = await getWPJSON(
+		"wp-json/wp/v2/pages",
+		[]
+	);
 
 	// retrieve by page slug
 	const pageObjs = retrievePageObj(pageData, "home");
@@ -156,7 +159,9 @@ export default async function Home() {
 						buttonLink={imagesShowcasePageSection.button_link!}
 						images={groupImagesShowcase(imagesShowcasePageSection)}
 					/>
-					<FeaturedProductHome product={homePage.featured_product!} />
+					{homePage.featured_product && (
+						<FeaturedProductHome product={homePage.featured_product || null} />
+					)}
 				</>
 			);
 		}
