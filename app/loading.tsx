@@ -3,7 +3,7 @@ import { getWPJSON } from "./utils";
 
 export default async function Loading() {
 	const logo: Logo = await getWPJSON("wp-json/custom/v1/logo", {
-		logo_url: "images/logo-colors.svg",
+		logo_url: "/logo/logo-colors.svg",
 	});
 	return (
 		<div className="bg-background fixed top-0 left-0 w-full h-full flex items-center justify-center z-10">

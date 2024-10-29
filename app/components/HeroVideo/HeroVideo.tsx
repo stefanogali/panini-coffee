@@ -35,8 +35,10 @@ export default function HeroVideo({ url, heroContent, buttonLabel, buttonLink }:
 						isIntersected ? "visible" : ""
 					}`}
 					ref={sectionRef}>
-					<div className="mb-16 sm:mb-40 md:max-w-[50%]">
-						<h1 className="text-white font-bold mb-heading-margin-bottom">{heroContent}</h1>
+					<div className="mb-8 sm:mb-40 md:max-w-[50%]">
+						<h1 className="text-white font-bold mb-heading-margin-bottom text-4xl md:text-5xl">
+							{heroContent}
+						</h1>
 						<h4>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
 							laudantium

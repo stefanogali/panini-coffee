@@ -19,7 +19,7 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const logo: Logo = await getWPJSON("wp-json/custom/v1/logo", {
-		logo_url: "./images/logo-colors.svg",
+		logo_url: "./logo/logo-colors.svg",
 	});
 
 	return (

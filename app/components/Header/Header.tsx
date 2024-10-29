@@ -58,7 +58,7 @@ export default function Header({ logoUrl }: HeaderProps) {
 					<div className="flex justify-between items-center">
 						<Link href="/">
 							<Image
-								className="max-w-[150px] h-auto md:w-[175px] md:h-[55px]"
+								className="max-w-[150px] h-auto md:w-[175px]"
 								src={logoUrl}
 								alt="Logo"
 								width={175}
