@@ -116,7 +116,6 @@ const QuantitySelector = ({
 };
 
 export default function ProductOverview({ product, variations }: ProductOverviewProps) {
-	console.log(product);
 	const [initialWeight] = variations.filter((variation) => {
 		return variation.menu_order === 1;
 	});
