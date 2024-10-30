@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Headless Wordpress E-Commerce Template
 
-## Getting Started
+This is a Next.Js + Typescript + Tailwindcss + headless Wordpress free starter template. This project uses the [Wordpress REST API](https://developer.wordpress.org/rest-api/) and the [WooCommerce REST API](https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction).
 
-First, run the development server:
+![Hero Image](/public/template/screenshot.png?raw=true "Panini Coffee hero image")
+
+A Next.js 14 and App Router-ready ecommerce template featuring:
+
+- WordPress REST API
+- WooCommerce REST API
+- Next.js App Router
+- Products filtering by category
+- Optimized for SEO using Next.js's Metadata
+- React Server Components (RSCs) and Suspense
+- Custom React Hooks
+- New fetching and caching paradigms
+- Styling with Tailwind CSS
+
+## Instructions for running locally
+
+Please fork or clone the repo
+
+```bash
+https://github.com/stefanogali/panini-coffee.git
+```
+
+then install the dependencies with
+
+```bash
+npm install
+```
+
+You need to run Wordpress locally on your machine, you can use one of the different Local servers softwares (MAMP, XAMPP, Local etc.). After a fresh Wordpress installation, please add the [panini-coffee](wp-theme) theme in your Wordpress themes folder located inside **wp-content/themes**. In your Wordpress dashboard to Appereance -> Themes and activate the Panini Coffee theme. You will be then prompted to download and activate the [One Click Demo Plugin](wordpress.org/plugins/one-click-demo-import/). Please go ahead, this will add the 2 required Plugins (Advanced Custom fields and Woocommerce) and will populate the content for the pages. Activate the plugins if they are not automatically.
+
+Woocommerce may ask you to set up your store, if so go ahead and once you finished go to WooCommerce -> Settings -> Advanced -> REST API and create the keys. You will create a Consumer Key and a Consumer Secret Key.
+
+To run your Next.js app you will need to use the environment variables [defined in `.env.example`](.env.example)
+
+```bash
+# Example to run in localhost with MAMP or XAMPP
+SITE_URL = "http://localhost:8888/folder_of_your_site"
+PROTOCOL = "http"
+HOSTNAME = "localhost"
+HOSTNAMEPORT = "8888"
+IMAGE_PATHNAME = "/folder_of_your_site/wp-content/uploads/**"
+WOOCOMMERCECONSUMERKEY = "your_woocommerce_consumer_key"
+WOOCOMMERCECONSUMERSECRET = "your_woocommerce_customer_secret"
+```
+
+Once replaced rename your file to .env.development, then you can run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+and the Next.js app should be running on your local with no errors.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can start adding more pages and products, extending the functionality and customizing based on your needs.
