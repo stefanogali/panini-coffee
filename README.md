@@ -30,7 +30,7 @@ then install the dependencies with
 npm install
 ```
 
-You need to run Wordpress locally on your machine, you can use one of the different Local servers software (MAMP, XAMPP, Local etc.). After a fresh Wordpress installation, please add the [panini-coffee](wp-theme) theme in your Wordpress themes folder located inside **wp-content/themes**. In your Wordpress dashboard to Appereance -> Themes and activate the Panini Coffee theme. You will be then prompted to download and activate the [One Click Demo Plugin](wordpress.org/plugins/one-click-demo-import/). Please go ahead, after you should have a new entry under **Appearance** called **Import Demo data**. Click the Import Demo Data button, this will add the 2 required Plugins (Advanced Custom fields and Woocommerce) and will populate the content for the pages. Activate the plugins if they are not automatically.
+You need to run Wordpress locally on your machine, you can use one of the different Local servers software (MAMP, XAMPP, Local etc.). After a fresh Wordpress installation, please add the [panini-coffee](wp-theme) theme in your Wordpress themes folder located inside **wp-content/themes**. In your Wordpress dashboard to Appereance -> Themes and activate the Panini Coffee theme. You will be then prompted to download and activate the [One Click Demo Plugin](wordpress.org/plugins/one-click-demo-import/). Please go ahead, after you should have a new entry under **Appearance** called **Import Demo data**. Click the Import Demo Data button, this will add the 2 required Plugins (Secure Custom fields and Woocommerce) and will populate the content for the pages. Activate the plugins if they are not automatically.
 
 Woocommerce may ask you to set up your store, if so go ahead and once you finished go to WooCommerce -> Settings -> Advanced -> REST API and create the keys. You will create a Consumer Key and a Consumer Secret Key.
 
@@ -55,4 +55,4 @@ npm run dev
 
 and the Next.js app should be running on your local with no errors.
 
-You can start adding more pages and products, extending the functionality and customizing based on your needs. At this stage there is not functionality implemented for the checkout or the cart.
+You can start adding more pages and products, extending the functionality and customizing based on your needs. At this stage there is not functionality implemented for the checkout or the cart. The about page has a slider for the Testimonial, if you wish to add these go to your WordPress installation and you will find a Custom Post Type for the testimonials. Feel free to add the Testimonial posts.
