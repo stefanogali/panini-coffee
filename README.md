@@ -55,4 +55,4 @@ npm run dev
 
 and the Next.js app should be running on your local with no errors.
 
-You can start adding more pages and products, extending the functionality and customizing based on your needs. At this stage there is not functionality implemented for the checkout or the cart. The about page has a slider for the Testimonial, if you wish to add these go to your WordPress installation and you will find a Custom Post Type for the testimonials. Feel free to add the Testimonial posts.
+You can start adding more pages and products, extending the functionality and customizing based on your needs. At this stage there is not functionality implemented for the checkout or the cart. The about page has a slider for the Testimonial, if you wish to add these go to your WordPress dashboard and you will find a Custom Post Type for the testimonials. Feel free to add the Testimonial posts.
