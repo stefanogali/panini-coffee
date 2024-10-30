@@ -4,7 +4,7 @@ This is a Next.Js + Typescript + Tailwindcss + headless Wordpress free starter t
 
 ![Hero Image](/public/template/screenshot.png?raw=true "Panini Coffee hero image")
 
-A Next.js 14 and App Router-ready ecommerce template featuring:
+A Next.js 14 and App Router ecommerce template featuring:
 
 - WordPress REST API
 - WooCommerce REST API
@@ -30,7 +30,7 @@ then install the dependencies with
 npm install
 ```
 
-You need to run Wordpress locally on your machine, you can use one of the different Local servers softwares (MAMP, XAMPP, Local etc.). After a fresh Wordpress installation, please add the [panini-coffee](wp-theme) theme in your Wordpress themes folder located inside **wp-content/themes**. In your Wordpress dashboard to Appereance -> Themes and activate the Panini Coffee theme. You will be then prompted to download and activate the [One Click Demo Plugin](wordpress.org/plugins/one-click-demo-import/). Please go ahead, this will add the 2 required Plugins (Advanced Custom fields and Woocommerce) and will populate the content for the pages. Activate the plugins if they are not automatically.
+You need to run Wordpress locally on your machine, you can use one of the different Local servers software (MAMP, XAMPP, Local etc.). After a fresh Wordpress installation, please add the [panini-coffee](wp-theme) theme in your Wordpress themes folder located inside **wp-content/themes**. In your Wordpress dashboard to Appereance -> Themes and activate the Panini Coffee theme. You will be then prompted to download and activate the [One Click Demo Plugin](wordpress.org/plugins/one-click-demo-import/). Please go ahead, this will add the 2 required Plugins (Advanced Custom fields and Woocommerce) and will populate the content for the pages. Activate the plugins if they are not automatically.
 
 Woocommerce may ask you to set up your store, if so go ahead and once you finished go to WooCommerce -> Settings -> Advanced -> REST API and create the keys. You will create a Consumer Key and a Consumer Secret Key.
 
@@ -55,4 +55,4 @@ npm run dev
 
 and the Next.js app should be running on your local with no errors.
 
-You can start adding more pages and products, extending the functionality and customizing based on your needs.
+You can start adding more pages and products, extending the functionality and customizing based on your needs. At this stage there is not functionality implemented for the checkout or the cart.
