@@ -5,10 +5,10 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: process.env.PROTOCOL,
-				hostname: process.env.HOSTNAME,
-				port: process.env.HOSTNAMEPORT,
-				pathname: process.env.IMAGE_PATHNAME,
+				protocol: process.env.PROTOCOL || "http",
+				hostname: process.env.HOSTNAME || "localhost",
+				port: process.env.HOSTNAMEPORT || "", // Fallback to an empty string if no port
+				pathname: process.env.IMAGE_PATHNAME || "/**",
 			},
 		],
 	},
