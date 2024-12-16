@@ -4,6 +4,8 @@ This is a Next.Js + Typescript + Tailwindcss + headless Wordpress free starter t
 
 ![Hero Image](/public/template/screenshot.png?raw=true "Panini Coffee hero image")
 
+The live project can be found at [https://panini-coffee.vercel.app/](https://panini-coffee.vercel.app/)
+
 A Next.js 14 and App Router ecommerce template featuring:
 
 - WordPress REST API
