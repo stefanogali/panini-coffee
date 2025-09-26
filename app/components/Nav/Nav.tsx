@@ -43,16 +43,16 @@ const BurgerMobile = ({ handleClick, isOpen }: { handleClick: () => void; isOpen
 	return (
 		<Button
 			onClick={handleClick}
-			className="!mt-0 relative z-30 flex flex-col justify-center items-center gap-1 md:hidden">
+			className="mt-0! relative z-30 flex flex-col justify-center items-center gap-1 md:hidden">
 			<span
 				className={`bg-white block transition-all duration-300 ease-out 
-		h-0.5 w-6 rounded-sm ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}></span>
+		h-0.5 w-6 rounded-xs ${isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}></span>
 			<span
 				className={`bg-white block transition-all duration-300 ease-out 
-		h-0.5 w-6 rounded-sm my-0.5 ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
+		h-0.5 w-6 rounded-xs my-0.5 ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
 			<span
 				className={`bg-white block transition-all duration-300 ease-out 
-		h-0.5 w-6 rounded-sm ${isOpen ? "-rotate-45 -translate-y-[11px]" : "translate-y-0.5"}`}></span>
+		h-0.5 w-6 rounded-xs ${isOpen ? "-rotate-45 -translate-y-[11px]" : "translate-y-0.5"}`}></span>
 		</Button>
 	);
 };
@@ -68,7 +68,7 @@ const NavMobilePanel = ({ pathname, isOpen }: { pathname: string; isOpen: boolea
 					return (
 						<li
 							key={index}
-							className={`w-full py-2.5 font-bold border-b-[1px] border-gray-10 ${
+							className={`w-full py-2.5 font-bold border-b border-gray-10 ${
 								item === "Home" && pathname === "/"
 									? "text-orange"
 									: `/${item.toLowerCase()}` === pathname

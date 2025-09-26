@@ -111,7 +111,7 @@ export default function AllProducts({ products }: AllProductsProps) {
 					<Button
 						onClick={clickHandler}
 						className="border-[3px] mx-auto uppercase flex items-center">
-						Load more {loading && <SettingsWheel className="ml-2.5 w-6 h-auto animate-spinWheel" />}
+						Load more {loading && <SettingsWheel className="ml-2.5 w-6 h-auto animate-spin-wheel" />}
 					</Button>
 				</div>
 			)}

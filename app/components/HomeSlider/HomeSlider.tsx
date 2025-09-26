@@ -12,7 +12,7 @@ export default async function HomeSlider() {
 		return (
 			<>
 				<h2 className="text-center font-bold text-white">Choose from our products</h2>
-				<h3 className="text-center font-bold text-oliveGreen mb-10">Recently added products</h3>
+				<h3 className="text-center font-bold text-olive-green mb-10">Recently added products</h3>
 			</>
 		);
 	};

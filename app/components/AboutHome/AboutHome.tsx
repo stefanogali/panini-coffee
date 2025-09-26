@@ -27,7 +27,7 @@ const TextContent = ({ title, content, buttonLabel, buttonLink }: AboutHomeProps
 			<h2 className="mb-heading-margin-bottom font-bold">{title}</h2>
 			<p dangerouslySetInnerHTML={{ __html: formattedContent }}></p>
 			<Link href={buttonLink}>
-				<Button className="border-oliveGreen border-[3px]">{buttonLabel}</Button>
+				<Button className="border-olive-green border-[3px]">{buttonLabel}</Button>
 			</Link>
 		</div>
 	);

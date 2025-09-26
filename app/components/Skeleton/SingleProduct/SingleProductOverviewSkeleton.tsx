@@ -1,7 +1,7 @@
 export default function SingleProductOverviewSkeleton() {
 	return (
 		<div className="flex flex-col justify-between animate-pulse max-h-[400px] overflow-hidden lg:flex-row md:gap-x-6 lg:gap-x-24 xl:gap-x-48 ">
-			<div className="flex justify-center items-center mb-5 bg-gradient-to-br from-white to-[#B9B9B9] rounded-[20px] w-full min-h-[200px] lg:min-h-[0] lg:mb-0">
+			<div className="flex justify-center items-center mb-5 bg-linear-to-br from-white to-[#B9B9B9] rounded-[20px] w-full min-h-[200px] lg:min-h-[0] lg:mb-0">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"

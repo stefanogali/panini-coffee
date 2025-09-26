@@ -24,7 +24,7 @@ const FooterColumn2 = () => {
 		<div className="basis-1/3 grow lg:grow-0">
 			<h5 className="mb-7">Contrary to popular belief, Lorem Ipsum is not simply random text.</h5>
 			<Form>
-				<Input className="w-full bg-transparent border-b-[1px]" />
+				<Input className="w-full bg-transparent border-b" />
 				<Button className="uppercase border-white border-[3px]">Send</Button>
 			</Form>
 		</div>

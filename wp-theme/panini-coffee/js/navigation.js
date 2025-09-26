@@ -61,7 +61,7 @@
 	// Toggle focus each time a menu link is focused or blurred.
 	for ( const link of links ) {
 		link.addEventListener( 'focus', toggleFocus, true );
-		link.addEventListener( 'blur', toggleFocus, true );
+		link.addEventListener( 'blur-sm', toggleFocus, true );
 	}
 
 	// Toggle focus each time a menu link with children receive a touch event.
@@ -73,7 +73,7 @@
 	 * Sets or removes .focus class on an element.
 	 */
 	function toggleFocus() {
-		if ( event.type === 'focus' || event.type === 'blur' ) {
+		if ( event.type === 'focus' || event.type === 'blur-sm' ) {
 			let self = this;
 			// Move up through the ancestors of the current link until we hit .nav-menu.
 			while ( ! self.classList.contains( 'nav-menu' ) ) {

@@ -75,12 +75,12 @@ export default function Slider(props: SliderProps) {
 			</Swiper>
 			<Button
 				onClick={handlePrev}
-				className="arrow-left arrow text-oliveGreen absolute left-[-20px] top-[50%] translate-y-[-50%] z-10 mt-0 !p-2.5 font-medium border-2 border-oliveGreen rounded-full drop-shadow-lg">
+				className="arrow-left arrow text-olive-green absolute left-[-20px] top-[50%] translate-y-[-50%] z-10 mt-0 p-2.5! font-medium border-2 border-olive-green rounded-full drop-shadow-lg">
 				<span className="font-bold">&larr;</span>
 			</Button>
 			<Button
 				onClick={handleNext}
-				className="arrow-right arrow text-oliveGreen absolute right-[-20px] top-[50%] translate-y-[-50%] z-10 mt-0 !p-2.5 font-medium border-2 border-oliveGreen rounded-full drop-shadow-lg">
+				className="arrow-right arrow text-olive-green absolute right-[-20px] top-[50%] translate-y-[-50%] z-10 mt-0 p-2.5! font-medium border-2 border-olive-green rounded-full drop-shadow-lg">
 				<span className="font-bold">&rarr;</span>
 			</Button>
 		</div>

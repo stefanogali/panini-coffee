@@ -56,7 +56,7 @@ const WeightSelector = ({
 			<select
 				id="weight-options"
 				name="weight-options"
-				className="bg-transparent pl-3 pr-16 py-2.5 border-[1px] border-white focus:outline-none"
+				className="bg-transparent pl-3 pr-16 py-2.5 border border-white focus:outline-hidden"
 				onChange={handleChange}>
 				{productAttributes.options.map((item) => {
 					return (
@@ -103,7 +103,7 @@ const QuantitySelector = ({
 			<select
 				id="quantity"
 				name="quantity"
-				className="bg-transparent pl-3 pr-16 py-2.5 border-[1px] border-white focus:outline-none"
+				className="bg-transparent pl-3 pr-16 py-2.5 border border-white focus:outline-hidden"
 				onChange={handleChange}>
 				{[...Array(10)].map((_, index) => (
 					<option key={index + 1} value={index + 1}>

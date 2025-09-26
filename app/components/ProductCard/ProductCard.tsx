@@ -7,7 +7,7 @@ export default function ProductCard(props: ImageProps & { imageClassName?: strin
 	return (
 		<div
 			className={clsx(
-				"flex flex-col justify-center w-full h-full items-center text-background py-14 px-5 rounded-[20px] bg-gradient-to-br from-white to-[#B9B9B9]",
+				"flex flex-col justify-center w-full h-full items-center text-background py-14 px-5 rounded-[20px] bg-linear-to-br from-white to-[#B9B9B9]",
 				className
 			)}>
 			<Image className={imageClassName} {...imageProps} />

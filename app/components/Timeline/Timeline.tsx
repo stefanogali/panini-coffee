@@ -36,7 +36,7 @@ const TimelineContainer = ({
 			className={`${MARGIN_TOP_TIMELINE_CONTAINER} px-5 py-5 w-[90%] lg:w-[50%] bg-background ${
 				isActive ? "visible animate-bounceIn" : "invisible"
 			}`}>
-			<h4 className="text-oliveGreen font-bold text-center">{year}</h4>
+			<h4 className="text-olive-green font-bold text-center">{year}</h4>
 			<p>{content}</p>
 		</div>
 	);
@@ -187,9 +187,9 @@ export default function Timeline({
 								: windowHeight
 						}px`,
 					}}>
-					<div className="bg-oliveGreen rounded-full w-7 h-7"></div>
+					<div className="bg-olive-green rounded-full w-7 h-7"></div>
 					<div
-						className="bg-oliveGreen relative"
+						className="bg-olive-green relative"
 						style={{ height: `${height}px`, width: "5px" }}
 						ref={timelineRef}></div>
 					<div
