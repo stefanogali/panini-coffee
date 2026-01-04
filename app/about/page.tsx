@@ -55,6 +55,7 @@ export default async function Page() {
 		"wp-json/wp/v2/pages",
 		[]
 	);
+
 	const pageObjs = retrievePageObj(pageData, "about");
 
 	const pageLayout: React.ReactElement[] = [];
