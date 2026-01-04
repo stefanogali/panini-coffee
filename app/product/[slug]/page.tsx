@@ -15,13 +15,18 @@ const woocommerceConnection = connectWCApi();
 
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
-	const response = await woocommerceConnection.get("products");
+	try {
+		const response = await woocommerceConnection.get("products");
+		const products = Array.isArray(response) ? response : response?.data || [];
 
-	const products = Array.isArray(response) ? response : response?.data || [];
-
-	return products.map((product: SingleProduct) => {
-		return { slug: product.slug, id: product.id };
-	});
+		return products.map((product: SingleProduct) => {
+			return { slug: product.slug, id: product.id };
+		});
+	} catch (error) {
+		console.error("Error generating static params:", error);
+		// Return empty array on error - pages will be generated on-demand
+		return [];
+	}
 }
 
 // to do: refactor
