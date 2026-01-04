@@ -15,9 +15,11 @@ const woocommerceConnection = connectWCApi();
 
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
-	const products: { data: SingleProduct[] } = await woocommerceConnection.get("products");
+	const response = await woocommerceConnection.get("products");
 
-	return products.data.map((product) => {
+	const products = Array.isArray(response) ? response : response?.data || [];
+
+	return products.map((product: SingleProduct) => {
 		return { slug: product.slug, id: product.id };
 	});
 }
