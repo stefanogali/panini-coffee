@@ -23,8 +23,8 @@ export async function generateStaticParams() {
 }
 
 // to do: refactor
-export default async function Page({ params }: { params: { slug: string } }) {
-	const { slug } = params;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
 
 	let products: { data: SingleProduct[] } = { data: [] };
 	let reviews: { data: Reviews[] } = { data: [] };
@@ -58,6 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 	// get data for specific product
 	const [product] = singleProduct;
+
 	const singleProductReviews = reviews.data.filter((item) => {
 		return item.product_id === product.id;
 	});

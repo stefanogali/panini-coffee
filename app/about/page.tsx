@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Fragment } from "react/jsx-runtime";
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "../utils";
 import HeroTwoCols from "../components/HeroTwoCols/HeroTwoCols";
 import Timeline from "../components/Timeline/Timeline";
@@ -76,7 +77,7 @@ export default async function Page() {
 				ImageTextTwoCols
 			>(pageMeta.acf_field_groups, "Image text two cols");
 			pageLayout.push(
-				<>
+				<Fragment key={`about-${pageMeta.id}`}>
 					<HeroTwoCols
 						title={heroPageSection.first_col.title}
 						firstParagraph={heroPageSection.first_col.first_paragraph}
@@ -102,9 +103,9 @@ export default async function Page() {
 						buttonLabel={imageTextPageSection.col_2.button_label}
 						buttonLink={imageTextPageSection.col_2.button_link}
 					/>
-				</>
+				</Fragment>
 			);
-			pageLayout.push(<TestimonialSlider />);
+			pageLayout.push(<TestimonialSlider key={`testimonials-${pageMeta.id}`} />);
 		}
 	});
 

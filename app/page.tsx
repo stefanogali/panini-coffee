@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react/jsx-runtime";
 import { getWPJSON, retrievePageObj, retrieveFieldGroups } from "./utils";
 import HeroVideo from "./components/HeroVideo/HeroVideo";
 import AboutHome from "./components/AboutHome/AboutHome";
@@ -138,7 +139,7 @@ export default async function Home() {
 			>(pageMeta.acf_field_groups, "Images showcase");
 
 			pageLayout.push(
-				<>
+				<Fragment key={`home-sections-${pageMeta.id}`}>
 					<HeroVideo
 						heroContent={heroPageSection.hero_content}
 						buttonLabel={heroPageSection.button_label}
@@ -162,7 +163,7 @@ export default async function Home() {
 					{homePage.featured_product && (
 						<FeaturedProductHome product={homePage.featured_product || null} />
 					)}
-				</>
+				</Fragment>
 			);
 		}
 	});

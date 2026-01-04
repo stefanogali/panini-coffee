@@ -13,11 +13,12 @@ export const metadata: Metadata = {
 export default async function Page({
 	searchParams,
 }: {
-	searchParams?: { [key: string]: string | undefined };
+	searchParams?: Promise<{ [key: string]: string | undefined }>;
 }) {
 	const perPage = 4;
-	const page = searchParams?.page || 1;
-	const category = searchParams?.category || "";
+	const params = await searchParams;
+	const page = params?.page || 1;
+	const category = params?.category || "";
 
 	let products: { data: SingleProduct[] } | undefined;
 

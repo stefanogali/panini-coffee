@@ -11,6 +11,8 @@ const nextConfig = {
 				pathname: process.env.IMAGE_PATHNAME || "/**",
 			},
 		],
+		dangerouslyAllowSVG: true,
+		unoptimized: process.env.NODE_ENV === "development",
 	},
 };
 
