@@ -37,6 +37,9 @@ export default function Header({ logoUrl }: HeaderProps) {
 		}
 	}, [attachHeader]);
 
+	console.log("attachHeader", attachHeader);
+	console.log("isHome", isHome);
+
 	return (
 		<>
 			{!isHome && attachHeader && <div style={{ height: headerHeight }}></div>}
