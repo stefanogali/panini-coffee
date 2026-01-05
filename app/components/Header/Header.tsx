@@ -18,19 +18,13 @@ export default function Header({ logoUrl }: HeaderProps) {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const windowHeight = window.innerHeight;
-			const scrollTop =
-				window.pageYOffset ||
-				(document.documentElement || document.body.parentNode || document.body).scrollTop;
-			if (scrollTop > windowHeight) {
-				setAttachHeader(true);
-			} else {
-				setAttachHeader(false);
-			}
+			const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+			const threshold = window.innerHeight;
+			setAttachHeader(scrollTop > threshold);
 		};
 
 		handleScroll();
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
