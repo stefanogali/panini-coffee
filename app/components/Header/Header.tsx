@@ -12,7 +12,8 @@ type HeaderProps = {
 
 export default function Header({ logoUrl }: HeaderProps) {
 	const pathname = usePathname();
-	const isHome = pathname === "/" || pathname === "" || pathname === null;
+	const normalizedPath = (pathname ?? "/").split("?")[0] || "/";
+	const isHome = normalizedPath === "/";
 	const headerRef = useRef<HTMLElement>(null);
 	const [attachHeader, setAttachHeader] = useState(false);
 	const [headerHeight, setHeaderHeight] = useState(0);
@@ -36,9 +37,6 @@ export default function Header({ logoUrl }: HeaderProps) {
 			setHeaderHeight(headerRef.current.offsetHeight);
 		}
 	}, [attachHeader]);
-
-	console.log("attachHeader", attachHeader);
-	console.log("isHome", isHome);
 
 	return (
 		<>
