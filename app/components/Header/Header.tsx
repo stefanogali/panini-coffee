@@ -12,6 +12,7 @@ type HeaderProps = {
 
 export default function Header({ logoUrl }: HeaderProps) {
 	const pathname = usePathname();
+	const isHome = pathname === "/" || pathname === "" || pathname === null;
 	const headerRef = useRef<HTMLElement>(null);
 	const [attachHeader, setAttachHeader] = useState(false);
 	const [headerHeight, setHeaderHeight] = useState(0);
@@ -38,10 +39,10 @@ export default function Header({ logoUrl }: HeaderProps) {
 
 	return (
 		<>
-			{pathname !== "/" && attachHeader && <div style={{ height: headerHeight }}></div>}
+			{!isHome && attachHeader && <div style={{ height: headerHeight }}></div>}
 			<header
 				className={`py-8 z-20 ${
-					pathname === "/"
+					isHome
 						? `${
 								attachHeader ? "fixed fade-in bg-background" : "absolute bg-transparent"
 						  } top-0 left-0 w-full `
