@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import clsx from "clsx";
 import Image from "next/image";
 import Nav from "../Nav/Nav";
 import Link from "next/link";
@@ -38,18 +39,20 @@ export default function Header({ logoUrl }: HeaderProps) {
 		}
 	}, [attachHeader]);
 
+	const headerClassName = isHome
+		? clsx(
+				"py-8 z-20 top-0 left-0 w-full",
+				attachHeader ? "fixed fade-in bg-background" : "absolute bg-transparent"
+		  )
+		: clsx(
+				"py-8 z-20",
+				attachHeader ? "fixed top-0 left-0 w-full fade-in bg-background" : "static bg-background"
+		  );
+
 	return (
 		<>
 			{!isHome && attachHeader && <div style={{ height: headerHeight }}></div>}
-			<header
-				className={`py-8 z-20 ${
-					isHome
-						? `${
-								attachHeader ? "fixed fade-in bg-background" : "absolute bg-transparent"
-						  } top-0 left-0 w-full `
-						: `${attachHeader ? "fixed top-0 left-0 w-full fade-in" : null} bg-background`
-				}`}
-				ref={headerRef}>
+			<header className={headerClassName} ref={headerRef}>
 				<div className="container px-5">
 					<div className="flex justify-between items-center">
 						<Link href="/">
