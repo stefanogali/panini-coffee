@@ -47,7 +47,7 @@ export default function Header({ logoUrl }: HeaderProps) {
 						? `${
 								attachHeader ? "fixed fade-in bg-background" : "absolute bg-transparent"
 						  } top-0 left-0 w-full `
-						: `${attachHeader ? "fixed top-0 left-0 w-full fade-in" : "static"} bg-background`
+						: `${attachHeader ? "fixed top-0 left-0 w-full fade-in" : null} bg-background`
 				}`}
 				ref={headerRef}>
 				<div className="container px-5">
