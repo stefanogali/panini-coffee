@@ -13,11 +13,15 @@ type HeaderProps = {
 
 export default function Header({ logoUrl }: HeaderProps) {
 	const pathname = usePathname();
-	const normalizedPath = (pathname ?? "/").split("?")[0] || "/";
-	const isHome = normalizedPath === "/";
 	const headerRef = useRef<HTMLElement>(null);
+	const [isHome, setIsHome] = useState(true);
 	const [attachHeader, setAttachHeader] = useState(false);
 	const [headerHeight, setHeaderHeight] = useState(0);
+
+	useEffect(() => {
+		const normalizedPath = (pathname ?? "/").split("?")[0] || "/";
+		setIsHome(normalizedPath === "/");
+	}, [pathname]);
 
 	useEffect(() => {
 		const handleScroll = () => {
