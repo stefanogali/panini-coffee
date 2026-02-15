@@ -39,15 +39,11 @@ export default function Header({ logoUrl }: HeaderProps) {
 		}
 	}, [attachHeader]);
 
-	const headerClassName = isHome
-		? clsx(
-				"py-8 z-20 top-0 left-0 w-full",
-				attachHeader ? "fixed fade-in bg-background" : "absolute bg-transparent"
-		  )
-		: clsx(
-				"py-8 z-20",
-				attachHeader ? "fixed top-0 left-0 w-full fade-in bg-background" : "static bg-background"
-		  );
+	const headerClassName = clsx("py-8 z-20", {
+		"top-0 left-0 w-full absolute": isHome && !attachHeader,
+		"top-0 left-0 w-full fixed fade-in bg-background": attachHeader,
+		"static bg-background": !isHome && !attachHeader,
+	});
 
 	return (
 		<>
